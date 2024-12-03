@@ -1,7 +1,11 @@
 name: test diagram frv
-version: 1.0.0
+version: '1'
 description: ferveffe
 author: youcef
+input_variables:
+  title:
+    type: string
+    description: ''
 content: >-
   Please craft a captivating story based on the title {{title}}, 
 
@@ -20,8 +24,4 @@ content: >-
   battles. Focus on making the story engaging and rich, delving into character
   motivations while ensuring the diagram succinctly organizes the narrative's
   evolution.
-input_variables:
-  title:
-    type: string
-    description: ''
 model: gpt-4o-mini
