@@ -1,9 +1,17 @@
 name: story OMG v1
-version: 1.0.0
+version: '1'
 description: >-
   My amazing tool to create a full story teller with scenario, cenematics and
   role playing...
 author: youcef
+input_variables:
+  topic:
+    type: string
+    description: ''
+output_variables:
+  script_generated:
+    type: string
+    description: the story script generated ...
 content: >-
   I want to craft a detailed cinematic story based on the topic: {{topic}}.
   Please follow these guidelines:  
@@ -27,14 +35,16 @@ content: >-
   [the story script generated ...]
 
   </script_generated>
-input_variables:
-  topic:
-    type: string
-    description: ''
-output_variables:
-  script_generated:
-    type: string
-    description: the story script generated ...
+
+
+  ### Always include the Output in Format in xml tags :
+
+
+  <script_generated>
+
+  [the story script generated ...]
+
+  </script_generated>
 model: anthropic.claude-3-5-haiku-20241022-v1:0
 parameters:
   max_tokens: 4000
