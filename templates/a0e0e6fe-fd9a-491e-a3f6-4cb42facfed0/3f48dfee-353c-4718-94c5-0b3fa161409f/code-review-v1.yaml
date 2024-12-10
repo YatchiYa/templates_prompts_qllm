@@ -1,0 +1,26 @@
+name: CODE REVIEW V1
+version: 1.0.0
+description: CODE REVIEW V1 TO TEST OUT
+author: youcef
+content: |-
+  I want you to review the following piece of code: 
+
+     {{code}}
+
+     **Context:**  
+     Please provide a brief explanation of what this code is intended to accomplish. 
+
+     **Review Criteria:**  
+     Consider the following aspects in your evaluation:
+     1. Clarity: Is the code easy to read and understand?
+     2. Efficiency: Are there any areas for optimization?
+     3. Best Practices: Does the code adhere to industry standards?
+     4. Functionality: Does it function as intended without errors?
+     5. Security: Are there any vulnerabilities present?
+
+     Please summarize your findings along with specific suggestions for improvement.
+input_variables:
+  code:
+    type: string
+    description: code to review
+model: gpt-4o-mini
