@@ -1,0 +1,48 @@
+name: WF TEST EX
+description: ghbvcdvgbhj
+defaultProvider: openai
+organization_name: youcef
+author_name: youcef
+steps:
+  - name: GitHub Downloader
+    description: Loads a GitHub repository
+    type: tool
+    tool: githubLoader
+    input:
+      repositoryUrl: '{{input}}'
+      authToken: '{{token}}'
+      exclude: '**/node_modules/**, **/dist/**, **/*.test.js, **/*.spec.ts, **/*.md'
+      include: '{{include}}'
+    output: repo_content
+  - name: CODE REV V2
+    description: CODE REVIEW FROM GIT
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a0e0e6fe-fd9a-491e-a3f6-4cb42facfed0/3f48dfee-353c-4718-94c5-0b3fa161409f/code-rev-v2.yaml
+    provider: openai
+    input:
+      code: $repo_content
+    output:
+      code_review: code_review
+    promptContent: >-
+      Please provide your code snippet below (in [programming language]) along
+      with a brief description of its intended functionality.
+
+      {{code}}
+
+
+      - provide a comprehensive review that includes:
+          <item>Functionality: Validation of accuracy in performing tasks.</item>
+          <item>Readability: Assessment on clarity and maintainability.</item>
+          <item>Efficiency: Suggestions for performance enhancements.</item>
+          <item>Best Practices: Guidance on industry-standard practices.</item>
+          Please indicate specific areas where feedback is most needed. I'm happy to collaborate with you to refine your code further, so feel free to ask questions as we review!
+
+      ### Always include the Output in Format in xml tags :
+
+
+      <code_review>
+
+      [the code review ]
+
+      </code_review>
