@@ -1,0 +1,15 @@
+name: file reader
+version: 1.0.0
+description: test file reader
+author: youcef
+content: >-
+  Please provide me the full content of the following file: {{file}}. 
+input_variables:
+  file:
+    type: file_path
+    description: file path to inject
+model: gpt-4o-mini
+parameters:
+  max_tokens: 499
+  temperature: 0.1
+  top_p: 0
