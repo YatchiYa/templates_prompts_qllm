@@ -1,0 +1,35 @@
+name: CODE REV V2
+version: 1.0.0
+description: CODE REVIEW FROM GIT
+author: youcef
+content: >-
+  Please provide your code snippet below (in [programming language]) along with
+  a brief description of its intended functionality.
+
+  {{code}}
+
+
+  - provide a comprehensive review that includes:
+      <item>Functionality: Validation of accuracy in performing tasks.</item>
+      <item>Readability: Assessment on clarity and maintainability.</item>
+      <item>Efficiency: Suggestions for performance enhancements.</item>
+      <item>Best Practices: Guidance on industry-standard practices.</item>
+      Please indicate specific areas where feedback is most needed. I'm happy to collaborate with you to refine your code further, so feel free to ask questions as we review!
+
+  ### Always include the Output in Format in xml tags :
+
+
+  <code_review>
+
+  [the code review ]
+
+  </code_review>
+input_variables:
+  code:
+    type: string
+    description: ''
+output_variables:
+  code_review:
+    type: string
+    description: 'the code review '
+model: gpt-4o-mini
