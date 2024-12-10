@@ -1,0 +1,42 @@
+name: GITHUB REPO
+description: TEST OUT A GITHUB REPO
+defaultProvider: openai
+organization_name: youcef
+author_name: youcef
+steps:
+  - name: GitHub Downloader
+    description: Loads a GitHub repository
+    type: tool
+    tool: githubLoader
+    input:
+      repositoryUrl: '{{input}}'
+      authToken: '{{token}}'
+      exclude: '**/node_modules/**, **/dist/**, **/*.test.js, **/*.spec.ts, **/*.md'
+      include: '{{include}}'
+    output: repo_content
+  - name: CODE REVIEW V1
+    description: CODE REVIEW V1 TO TEST OUT
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a0e0e6fe-fd9a-491e-a3f6-4cb42facfed0/3f48dfee-353c-4718-94c5-0b3fa161409f/code-review-v1.yaml
+    provider: openai
+    input:
+      code: '{{code}}'
+    output: {}
+    promptContent: |-
+      I want you to review the following piece of code: 
+
+         {{code}}
+
+         **Context:**  
+         Please provide a brief explanation of what this code is intended to accomplish. 
+
+         **Review Criteria:**  
+         Consider the following aspects in your evaluation:
+         1. Clarity: Is the code easy to read and understand?
+         2. Efficiency: Are there any areas for optimization?
+         3. Best Practices: Does the code adhere to industry standards?
+         4. Functionality: Does it function as intended without errors?
+         5. Security: Are there any vulnerabilities present?
+
+         Please summarize your findings along with specific suggestions for improvement.
