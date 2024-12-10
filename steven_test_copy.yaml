@@ -3,7 +3,7 @@ version: 1.0.0
 description: test file reader
 author: youcef
 content: >-
-   format in markdown {{file}}. 
+   {{file}}. 
 input_variables:
   file:
     type: string
