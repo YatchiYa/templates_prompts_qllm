@@ -6,7 +6,7 @@ content: >-
    format in markdown {{file}}. 
 input_variables:
   file:
-    type: string
+    type: file_path
     description: file path to inject
 model: gpt-4o-mini
 parameters:
