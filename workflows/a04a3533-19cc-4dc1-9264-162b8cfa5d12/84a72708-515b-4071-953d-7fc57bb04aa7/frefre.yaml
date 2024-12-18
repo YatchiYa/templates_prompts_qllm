@@ -1,0 +1,15 @@
+name: frefre
+description: ''
+defaultProvider: openai
+organization_name: Cmsi_dbt
+author_name: youcef
+steps:
+  - name: S3 Load To local
+    description: Load files from S3
+    type: tool
+    tool: s3ToLocal
+    input:
+      bucket_name: '{{bucket_name}}'
+      keys: '{{load_files}}'
+      separator: '{{separator}}'
+    output: template_content
