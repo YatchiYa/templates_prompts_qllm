@@ -18,9 +18,9 @@ steps:
       feature_tickets: feature_templates
 
   - name: Create Jira Tickets
-    tool: EnhancedJira
     action: createTicketsFromTemplate
     input: 
       feature_templates: "$feature_templates"
+      operation: createFromTemplate
     output:
       feature_tickets: feature_tickets
