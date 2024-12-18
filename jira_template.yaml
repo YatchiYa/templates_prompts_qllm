@@ -28,7 +28,7 @@ content: >
   ## Test Scenarios:
   {{test_scenarios}}
 
-  !! IMPORTANT !!  make sur to return the output feature_tickets
+  !! IMPORTANT !!  make sur to return the output feature_tickets in xml tag ! 
   <feature_tickets>
   ## Ticket Structure:
   
