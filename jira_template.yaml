@@ -28,6 +28,8 @@ content: >
   ## Test Scenarios:
   {{test_scenarios}}
 
+  !! IMPORTANT !!  make sur to return the output feature_tickets
+  <feature_tickets>
   ## Ticket Structure:
   
      ```json
@@ -56,6 +58,7 @@ content: >
        }
      ]
      ```
+     </feature_tickets>
 
   Note: Ensure all tickets are properly linked to the epic and contain appropriate
   story points and priority levels.
