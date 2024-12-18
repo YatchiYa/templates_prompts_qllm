@@ -4,22 +4,22 @@ defaultProvider: openai
 organization_name: Cmsi_dbt
 author_name: youcef
 steps:
-  - name: S3 Load To local
-    description: Load files from S3
-    type: tool
-    tool: s3ToLocal
+  - description: Load files from S3
     input:
       bucket_name: '{{bucket_name}}'
       keys: '{{load_files}}'
       separator: '{{separator}}'
+    name: S3 Load To local
     output: template_content
-  - name: LlamaIndexRAGV1
-    description: Load files from S3
+    tool: s3ToLocal
     type: tool
-    tool: LlamaIndexRAGV1
+  - description: Load files from S3
     input:
       directory: $template_content
-      query: '{{query}}'
       embedModel: '{{embedModel}}'
+      query: '{{query}}'
       topK: '{{topK}}'
-    output: template_content
+    name: LlamaIndexRAGV1
+    output: response
+    tool: LlamaIndexRAGV1
+    type: tool
