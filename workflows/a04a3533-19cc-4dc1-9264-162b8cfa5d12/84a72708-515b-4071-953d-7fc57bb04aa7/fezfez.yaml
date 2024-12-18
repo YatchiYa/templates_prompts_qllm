@@ -1,0 +1,16 @@
+name: fezfez
+description: fezfz
+defaultProvider: openai
+organization_name: Cmsi_dbt
+author_name: youcef
+steps:
+  - name: S3 Load To local
+    description: Load files from S3
+    type: tool
+    tool: s3ToLocal
+    input:
+      operation: load
+      s3_bucket: quantalogic-bucket
+      s3_keys: '{{load_key}}'
+      s3_separator: '{{s3_separator}}'
+    output: template_content
