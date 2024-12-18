@@ -11,5 +11,6 @@ steps:
     input:
       operation: load
       bucket_name: quantalogic-bucket
-      key: '{{key}}'
+      key: '{{load_key}}'
+      separator: '{{separator}}'
     output: template_content
