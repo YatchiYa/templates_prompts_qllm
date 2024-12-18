@@ -20,6 +20,6 @@ steps:
       query: '{{query}}'
       topK: '{{topK}}'
     name: LlamaIndexRAGV1
-    output: outputvariable
+    output: response
     tool: LlamaIndexRAGV1
     type: tool
