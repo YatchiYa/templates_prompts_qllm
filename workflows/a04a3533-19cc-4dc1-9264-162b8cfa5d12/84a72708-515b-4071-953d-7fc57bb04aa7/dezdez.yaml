@@ -1,0 +1,17 @@
+name: dezdez
+description: ''
+defaultProvider: openai
+organization_name: Cmsi_dbt
+author_name: youcef
+steps:
+  - name: S3 Load To local
+    description: Load files from S3
+    type: tool
+    tool: s3ToLocal
+    input:
+      bucket_name: quantalogic-bucket
+      keys: '{{load_files}}'
+      separator: ','
+      cleanupAfter: 60000
+      cleanupOnExit: '{{cleanupOnExit}}'
+    output: template_content
