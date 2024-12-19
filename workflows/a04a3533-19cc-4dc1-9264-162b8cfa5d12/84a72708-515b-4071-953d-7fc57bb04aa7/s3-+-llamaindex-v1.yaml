@@ -1,0 +1,24 @@
+name: S3 + LLAMAINDEX V1
+description: ''
+steps:
+  - description: Load files from S3
+    input:
+      bucket_name: '{{bucket_name}}'
+      keys: '{{load_files}}'
+      separator: '{{separator}}'
+    name: S3 Load To local
+    output: template_content
+    tool: s3ToLocal
+    type: tool
+  - description: Load files from S3
+    input:
+      directory: $template_content
+      embedModel: '{{embedModel}}'
+      query: '{{query}}'
+      topK: '{{topK}}'
+    name: LlamaIndexRAGV1
+    output:
+      response: response
+      sources: sources
+    tool: LlamaIndexRAGV1
+    type: tool
