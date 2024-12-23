@@ -1,0 +1,31 @@
+name: TEST
+version: 1.0.0
+description: GVFBHNGBF
+author: youcef
+content: >-
+  Please refine the following article to enhance its clarity, coherence, and
+  engagement while preserving its original message and intent. Consider the
+  target audience to be general readers and aim for a tone that is both
+  informative and accessible. In your revision, restructure awkward sentences,
+  improve transitions, eliminate redundancies, and adapt the emotional tone and
+  stylistic choices to resonate with the intended readers. When finished,
+  provide a comprehensive revised version of the article below: {{article}}.
+
+
+  ### Always include the Output in Format in xml tags :
+
+
+  <refnied_article>
+
+  [the full article]
+
+  </refnied_article>
+input_variables:
+  article:
+    type: string
+    description: ''
+output_variables:
+  refnied_article:
+    type: string
+    description: the full article
+model: anthropic.claude-3-5-sonnet-20241022-v2:0
