@@ -1,0 +1,16 @@
+name: dez
+description: dez
+defaultProvider: openai
+organization_name: mutualise_matomo
+author_name: youcef
+steps:
+  - name: API Server Call
+    description: Makes HTTP requests to external APIs with configurable options
+    type: tool
+    tool: ApiServerCall
+    input:
+      url: '{{url}}'
+      method: '{{method}}'
+      data: '{{data}}'
+      headers: '{{headers}}'
+    output: api_response
