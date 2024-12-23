@@ -4,24 +4,53 @@ defaultProvider: openai
 organization_name: mutualise_matomo
 author_name: youcef
 steps:
-  - name: S3 Load To local
-    description: Load files from S3
-    type: tool
-    tool: s3ToLocal
+  - description: Load files from S3
     input:
       bucket_name: '{{bucket_name}}'
       keys: '{{load_files}}'
       separator: '{{separator}}'
+    name: S3 Load To local
     output: template_content
-  - name: CustomApiServerCall tool
-    description: CustomApiServerCall call tool with any api
+    tool: s3ToLocal
     type: tool
-    tool: CustomApiServerCall
+  - description: CustomApiServerCall call tool with any api
     input:
-      url: '{{url}}'
-      method: '{{method}}'
-      repository: $template_content
-      query: '{{query}}'
       headers: '{{headers}}'
+      method: '{{method}}'
+      query: '{{query}}'
+      repository: $template_content
       token: '{{token}}'
+      url: '{{url}}'
+    name: CustomApiServerCall tool
     output: upload_response
+    tool: CustomApiServerCall
+    type: tool
+  - name: TEST
+    description: GVFBHNGBF
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/efdefc0e-c759-49f1-90c8-1b9ecb199dc5/db3e4127-6a77-42ca-80cb-b9ef7f983ff3/test.yaml
+    provider: openai
+    input:
+      article: $upload_response
+    output:
+      refnied_article: refnied_article
+    promptContent: >-
+      Please refine the following article to enhance its clarity, coherence, and
+      engagement while preserving its original message and intent. Consider the
+      target audience to be general readers and aim for a tone that is both
+      informative and accessible. In your revision, restructure awkward
+      sentences, improve transitions, eliminate redundancies, and adapt the
+      emotional tone and stylistic choices to resonate with the intended
+      readers. When finished, provide a comprehensive revised version of the
+      article below: {{article}}.
+
+
+      ### Always include the Output in Format in xml tags :
+
+
+      <refnied_article>
+
+      [the full article]
+
+      </refnied_article>
