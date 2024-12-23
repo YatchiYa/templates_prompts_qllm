@@ -1,0 +1,18 @@
+name: dza
+description: dza
+defaultProvider: openai
+organization_name: mutualise_matomo
+author_name: youcef
+steps:
+  - name: RAG Document Upload
+    description: Upload documents to RAG system from a specified repository
+    type: tool
+    tool: ApiServerCall
+    input:
+      url: http://localhost:8001/documents/api/raglite/upload_folder
+      method: POST
+      headers:
+        accept: application/json
+        Content-Type: application/json
+      data: '{{data}}'
+    output: upload_response
