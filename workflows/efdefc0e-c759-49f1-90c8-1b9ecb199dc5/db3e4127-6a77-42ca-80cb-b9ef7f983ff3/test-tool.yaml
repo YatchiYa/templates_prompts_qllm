@@ -1,0 +1,17 @@
+name: test tool
+description: hytgr
+defaultProvider: openai
+organization_name: mutualise_matomo
+author_name: youcef
+steps:
+  - name: API Server Call
+    description: Makes HTTP requests to external APIs with configurable options
+    type: tool
+    tool: apiServerCall
+    input:
+      url: '{{url}}'
+      method: '{{method}}'
+      token: '{{token}}'
+      data: '{{request_data}}'
+      headers: '{{headers}}'
+    output: api_response
