@@ -1,0 +1,27 @@
+name: test workflow
+description: hbgfvd
+defaultProvider: openai
+organization_name: mutualise_matomo
+author_name: youcef
+steps:
+  - name: S3 Load To local
+    description: Load files from S3
+    type: tool
+    tool: s3ToLocal
+    input:
+      bucket_name: '{{bucket_name}}'
+      keys: '{{load_files}}'
+      separator: '{{separator}}'
+    output: template_content
+  - name: CustomApiServerCall tool
+    description: CustomApiServerCall call tool with any api
+    type: tool
+    tool: CustomApiServerCall
+    input:
+      url: '{{url}}'
+      method: '{{method}}'
+      repository: $template_content
+      query: '{{query}}'
+      headers: '{{headers}}'
+      token: '{{token}}'
+    output: upload_response
