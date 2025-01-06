@@ -1,36 +1,57 @@
-name: story generator
-version: '1'
-description: jnhgfvdcvfbg
-author: youcef
+name: AI Story Generator
+version: 1.0.0
+description: Create compelling stories with rich narratives
+author: bewalthew
+content: |2
+   ## Story Parameters
+        Genre: {{genre}}
+        Theme: {{theme}}
+        Length: {{word_count}} words
+        Target Audience: {{target_audience}}
+
+        ## Story Elements Requirements
+        - Develop complex characters
+        - Create engaging plot arcs
+        - Build immersive settings
+        - Include meaningful dialogue
+        - Maintain consistent narrative voice
+
+        ## Always include the Output in Format:
+
+        <story_structure>
+        [Plot outline and story beats]
+        </story_structure>
+
+        <story>
+        [Complete story text]
+        </story>
+
+        <story_elements>
+        [List of characters, settings, and major plot points]
+        </story_elements>
+
+        END.
 input_variables:
   genre:
     type: string
-    description: ''
+    description: genre of story
   theme:
     type: string
-    description: ''
+    description: theme of story
   word_count:
-    type: string
-    description: ''
+    type: number
+    description: max amount of words
   target_audience:
     type: string
-    description: ''
+    description: traget audience of story
 output_variables:
-  generated_story:
+  story_structure:
     type: string
-    description: 'the generated story '
-content: |-
-  give me a story taking in consideration : 
-
-
-        genre: "{{genre}}"
-        theme: "{{theme}}"
-        word_count: "{{word_count}}"
-        target_audience: "{{target_audience}}"
-
-  ### Always include the Output in Format in xml tags :
-
-  <generated_story>
-  [the generated story ]
-  </generated_story>
+    description: Plot outline and story beats
+  story:
+    type: string
+    description: Complete story text
+  story_elements:
+    type: string
+    description: List of characters, settings, and major plot points
 model: gpt-4o-mini
