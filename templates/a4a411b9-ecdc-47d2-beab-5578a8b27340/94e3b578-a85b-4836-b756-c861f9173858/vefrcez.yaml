@@ -1,0 +1,36 @@
+name: vefrcez
+version: 1.0.0
+description: frcedxs
+author: youcef
+content: |-
+  using the {{scene_text}} and using {{visual_style}} and {{atmospheric_mood}}
+
+  give me a better result
+
+  ### Always include the Output in Format in xml tags :
+
+  <scene_visualization>
+  [scene visualization generated]
+  </scene_visualization>
+
+  <cinematic_notes>
+  [cinematic notes generated]
+  </cinematic_notes>
+input_variables:
+  scene_text:
+    type: string
+    description: ''
+  visual_style:
+    type: string
+    description: ''
+  atmospheric_mood:
+    type: string
+    description: ''
+output_variables:
+  scene_visualization:
+    type: string
+    description: scene visualization generated
+  cinematic_notes:
+    type: string
+    description: cinematic notes generated
+model: gpt-4o-mini
