@@ -1,0 +1,16 @@
+name: dez
+description: dezdez
+defaultProvider: openai
+organization_name: dez
+author_name: youcef
+steps:
+  - name: vfrgvf
+    description: vfecdfvg
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/vfrgvf.yaml
+    provider: openai
+    input:
+      doc: '{{doc}}'
+    output: {}
+    promptContent: 'resume my doc : {{doc}}'
