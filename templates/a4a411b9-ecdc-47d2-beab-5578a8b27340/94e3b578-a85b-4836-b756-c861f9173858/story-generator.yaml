@@ -1,0 +1,23 @@
+name: story generator
+version: 1.0.0
+description: jnhgfvdcvfbg
+author: youcef
+content: |-
+  give me a story taking in consideration : 
+
+
+        genre: "{{genre}}"
+        theme: "{{theme}}"
+        word_count: "{{word_count}}"
+        target_audience: "{{target_audience}}"
+
+  ### Always include the Output in Format in xml tags :
+
+  <generated_story>
+  [the generated story ]
+  </generated_story>
+output_variables:
+  generated_story:
+    type: string
+    description: 'the generated story '
+model: gpt-4o-mini
