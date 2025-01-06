@@ -1,36 +1,56 @@
-name: vefrcez
+name: Scene Visualization Generator
 version: 1.0.0
-description: frcedxs
-author: youcef
-content: |-
-  using the {{scene_text}} and using {{visual_style}} and {{atmospheric_mood}}
+description: Transform story scenes into vivid visual descriptions
+author: bewalthew
+content: |2-
+   ## Scene Input
+        <source_scene>
+        {{scene_text}}
+        </source_scene>
 
-  give me a better result
+        Style: {{visual_style}}
+        Mood: {{atmospheric_mood}}
 
-  ### Always include the Output in Format in xml tags :
+        ## Visualization Requirements
+        - Create detailed visual descriptions
+        - Include sensory details
+        - Describe lighting and atmosphere
+        - Capture character appearances
+        - Detail environmental elements
 
-  <scene_visualization>
-  [scene visualization generated]
-  </scene_visualization>
+        ## Always include the Output in Format:
 
-  <cinematic_notes>
-  [cinematic notes generated]
-  </cinematic_notes>
+        <visualization>
+        [Detailed scene visualization]
+        </visualization>
+
+        <mood_elements>
+        [Atmospheric and emotional elements]
+        </mood_elements>
+
+        <cinematic_elements>
+        [Camera angles and visual direction suggestions]
+        </cinematic_elements>
+
+        END.
 input_variables:
   scene_text:
     type: string
-    description: ''
+    description: the scene
   visual_style:
     type: string
-    description: ''
+    description: visual style
   atmospheric_mood:
     type: string
-    description: ''
+    description: mood
 output_variables:
-  scene_visualization:
+  visualization:
     type: string
-    description: scene visualization generated
-  cinematic_notes:
+    description: Detailed scene visualization
+  mood_elements:
     type: string
-    description: cinematic notes generated
+    description: Atmospheric and emotional elements
+  cinematic_elements:
+    type: string
+    description: Camera angles and visual direction suggestions
 model: gpt-4o-mini
