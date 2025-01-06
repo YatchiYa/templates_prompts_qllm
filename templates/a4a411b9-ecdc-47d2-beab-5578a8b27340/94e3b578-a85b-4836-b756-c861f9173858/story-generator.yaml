@@ -1,7 +1,24 @@
 name: story generator
-version: 1.0.0
+version: '1'
 description: jnhgfvdcvfbg
 author: youcef
+input_variables:
+  genre:
+    type: string
+    description: ''
+  theme:
+    type: string
+    description: ''
+  word_count:
+    type: string
+    description: ''
+  target_audience:
+    type: string
+    description: ''
+output_variables:
+  generated_story:
+    type: string
+    description: 'the generated story '
 content: |-
   give me a story taking in consideration : 
 
@@ -16,8 +33,4 @@ content: |-
   <generated_story>
   [the generated story ]
   </generated_story>
-output_variables:
-  generated_story:
-    type: string
-    description: 'the generated story '
 model: gpt-4o-mini
