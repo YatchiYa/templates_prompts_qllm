@@ -1,0 +1,69 @@
+name: workflow-test-v2
+description: hjgfbvdgbhj
+defaultProvider: openai
+organization_name: dez
+author_name: youcef
+steps:
+  - name: story generator
+    description: jnhgfvdcvfbg
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/story-generator.yaml
+    provider: openai
+    input:
+      genre: '{{genre}}'
+      theme: '{{theme}}'
+      word_count: '{{word_count}}'
+      target_audience: '{{target_audience}}'
+    output:
+      generated_story: generated_story
+    promptContent: |-
+      give me a story taking in consideration : 
+
+
+            genre: "{{genre}}"
+            theme: "{{theme}}"
+            word_count: "{{word_count}}"
+            target_audience: "{{target_audience}}"
+
+      ### Always include the Output in Format in xml tags :
+
+      <generated_story>
+      [the generated story ]
+      </generated_story>
+  - name: vefrcez
+    description: frcedxs
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/vefrcez.yaml
+    provider: openai
+    input:
+      scene_text: $generated_story
+      visual_style: '{{visual_style}}'
+      atmospheric_mood: '{{atmospheric_mood}}'
+    output:
+      scene_visualization: scene_visualization
+      cinematic_notes: cinematic_notes
+    promptContent: >-
+      using the {{scene_text}} and using {{visual_style}} and
+      {{atmospheric_mood}}
+
+
+      give me a better result
+
+
+      ### Always include the Output in Format in xml tags :
+
+
+      <scene_visualization>
+
+      [scene visualization generated]
+
+      </scene_visualization>
+
+
+      <cinematic_notes>
+
+      [cinematic notes generated]
+
+      </cinematic_notes>
