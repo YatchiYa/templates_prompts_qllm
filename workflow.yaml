@@ -2,7 +2,7 @@ name: story_visualization_workflow
 description: Generate a story and create scene visualizations
 defaultProvider: openai
 steps:
-  - templateUrl: https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/story-generator.yaml
+  - templateUrl: https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/story-up-v.yaml
     provider: openai
     input:
       genre: "{{genre}}"
