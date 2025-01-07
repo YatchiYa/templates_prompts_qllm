@@ -1,0 +1,158 @@
+name: hutygrftgy
+description: tygrgghyutgrf
+defaultProvider: openai
+organization_name: dez
+author_name: youcef
+steps:
+  - name: S3 Load
+    description: Load files from S3
+    type: tool
+    tool: s3
+    input:
+      operation: load
+      bucket_name: quantalogic-bucket
+      key: '{{key}}'
+    output: template_content
+  - name: Spec generator v0.1
+    description: a full spec generator using IA
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/spec-generator-v0.1.yaml
+    provider: openai
+    input:
+      docs: $template_content
+    output:
+      spec_generated: spec_generated
+    promptContent: |-
+      as an expert in creating specs
+      analyze my code, articles : 
+      {{docs}}
+
+       i need a full representation of my specs to present to my devs
+
+      ### Always include the Output in Format in xml tags :
+
+      <spec_generated>
+      [full spec generated]
+      </spec_generated>
+  - name: Mermaid creator v0.01
+    description: hgfd
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/mermaid-creator-v0.01.yaml
+    provider: openai
+    input:
+      specs: $spec_generated
+    output:
+      mermaid_diagram: mermaid_diagram
+    promptContent: |-
+      as an expeert in mermaid creator , 
+
+      based on my specs : 
+      {{specs}}
+
+      give me a full mermaid diagrams for my specs
+
+      ### Always include the Output in Format in xml tags :
+
+      <mermaid_diagram>
+      [a mermaid diagram exploitation]
+      </mermaid_diagram>
+  - name: vfrgvf
+    description: vfecdfvg
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/vfrgvf.yaml
+    provider: openai
+    input:
+      doc: $spec_generated
+    output: {}
+    promptContent: 'resume my doc : {{doc}}'
+  - name: AI Story Generator
+    description: Create compelling stories with rich narratives
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/story-generator.yaml
+    provider: openai
+    input:
+      genre: $template_content
+      theme: $mermaid_diagram
+      word_count: '{{word_count}}'
+      target_audience: '{{target_audience}}'
+    output:
+      story_structure: story_structure
+      story: story
+      story_elements: story_elements
+    promptContent: |2
+       ## Story Parameters
+            Genre: {{genre}}
+            Theme: {{theme}}
+            Length: {{word_count}} words
+            Target Audience: {{target_audience}}
+
+            ## Story Elements Requirements
+            - Develop complex characters
+            - Create engaging plot arcs
+            - Build immersive settings
+            - Include meaningful dialogue
+            - Maintain consistent narrative voice
+
+            ## Always include the Output in Format:
+
+            <story_structure>
+            [Plot outline and story beats]
+            </story_structure>
+
+            <story>
+            [Complete story text]
+            </story>
+
+            <story_elements>
+            [List of characters, settings, and major plot points]
+            </story_elements>
+
+            END.
+  - name: AI Story Generator
+    description: Create compelling stories with rich narratives
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/story-generator.yaml
+    provider: openai
+    input:
+      genre: $story_elements
+      theme: $story
+      word_count: '{{word_count}}'
+      target_audience: '{{target_audience}}'
+    output:
+      story_structure: story_structure
+      story: story
+      story_elements: story_elements
+    promptContent: |2
+       ## Story Parameters
+            Genre: {{genre}}
+            Theme: {{theme}}
+            Length: {{word_count}} words
+            Target Audience: {{target_audience}}
+
+            ## Story Elements Requirements
+            - Develop complex characters
+            - Create engaging plot arcs
+            - Build immersive settings
+            - Include meaningful dialogue
+            - Maintain consistent narrative voice
+
+            ## Always include the Output in Format:
+
+            <story_structure>
+            [Plot outline and story beats]
+            </story_structure>
+
+            <story>
+            [Complete story text]
+            </story>
+
+            <story_elements>
+            [List of characters, settings, and major plot points]
+            </story_elements>
+
+            END.
