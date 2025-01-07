@@ -1,0 +1,12 @@
+name: rthgrthyt
+version: 1.0.0
+description: grthyujyhtg
+author: youcef
+content: as an expert in summeriser {{doc}}
+input_variables:
+  doc:
+    type: string
+    description: dza
+model: gpt-4o-mini
+parameters:
+  max_tokens: 44
