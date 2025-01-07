@@ -1,0 +1,26 @@
+name: Mermaid creator v0.01
+version: 1.0.0
+description: hgfd
+author: youcef
+content: |-
+  as an expeert in mermaid creator , 
+
+  based on my specs : 
+  {{specs}}
+
+  give me a full mermaid diagrams for my specs
+
+  ### Always include the Output in Format in xml tags :
+
+  <mermaid_diagram>
+  [a mermaid diagram exploitation]
+  </mermaid_diagram>
+input_variables:
+  specs:
+    type: string
+    description: ''
+output_variables:
+  mermaid_diagram:
+    type: string
+    description: a mermaid diagram exploitation
+model: gpt-4o-mini
