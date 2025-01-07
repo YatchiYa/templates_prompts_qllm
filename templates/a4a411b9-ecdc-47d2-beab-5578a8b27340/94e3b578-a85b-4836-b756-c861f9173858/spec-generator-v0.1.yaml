@@ -1,0 +1,25 @@
+name: Spec generator v0.1
+version: 1.0.0
+description: a full spec generator using IA
+author: youcef
+content: |-
+  as an expert in creating specs
+  analyze my code, articles : 
+  {{docs}}
+
+   i need a full representation of my specs to present to my devs
+
+  ### Always include the Output in Format in xml tags :
+
+  <spec_generated>
+  [full spec generated]
+  </spec_generated>
+input_variables:
+  docs:
+    type: string
+    description: ''
+output_variables:
+  spec_generated:
+    type: string
+    description: full spec generated
+model: gpt-4o-mini
