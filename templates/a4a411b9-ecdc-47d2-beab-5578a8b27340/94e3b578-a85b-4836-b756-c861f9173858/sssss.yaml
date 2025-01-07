@@ -1,0 +1,43 @@
+name: SSSSS
+version: 1.0.0
+description: SSSSSS
+author: youcef
+content: |2-
+
+      ## Summarize the following document:
+
+      <document>
+      {{document_content}}
+      </document>
+      
+      Requirements:
+      - Provide a concise summary of the main points
+      - Highlight key insights or findings
+      - Keep the summary within {{max_words}} words
+      - Write the summary in <summary> tags 
+
+
+  ### Always include the Output in Format in xml tags :
+
+  <relexions>
+  [Your reflections on the document]
+  </relexions>
+
+  <summary>
+  [The content of the summary ]
+  </summary>
+input_variables:
+  document_content:
+    type: string
+    description: ''
+  max_words:
+    type: string
+    description: ''
+output_variables:
+  relexions:
+    type: string
+    description: Your reflections on the document
+  summary:
+    type: string
+    description: 'The content of the summary '
+model: gpt-4o-mini
