@@ -4,23 +4,19 @@ defaultProvider: openai
 organization_name: dez
 author_name: youcef
 steps:
-  - name: S3 Load
-    description: Load files from S3
-    type: tool
-    tool: s3
+  - description: Load files from S3
     input:
-      operation: load
       bucket_name: quantalogic-bucket
       key: '{{key}}'
+      operation: load
+    name: S3 Load
     output: template_content
-  - name: Spec generator v0.1
-    description: a full spec generator using IA
-    type: template
-    templateUrl: >-
-      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/spec-generator-v0.1.yaml
-    provider: openai
+    tool: s3
+    type: tool
+  - description: a full spec generator using IA
     input:
       docs: $template_content
+    name: Spec generator v0.1
     output:
       spec_generated: spec_generated
     promptContent: |-
@@ -35,14 +31,14 @@ steps:
       <spec_generated>
       [full spec generated]
       </spec_generated>
-  - name: Mermaid creator v0.01
-    description: hgfd
-    type: template
-    templateUrl: >-
-      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/mermaid-creator-v0.01.yaml
     provider: openai
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/spec-generator-v0.1.yaml
+    type: template
+  - description: hgfd
     input:
       specs: $spec_generated
+    name: Mermaid creator v0.01
     output:
       mermaid_diagram: mermaid_diagram
     promptContent: |-
@@ -58,31 +54,21 @@ steps:
       <mermaid_diagram>
       [a mermaid diagram exploitation]
       </mermaid_diagram>
-  - name: vfrgvf
-    description: vfecdfvg
-    type: template
-    templateUrl: >-
-      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/vfrgvf.yaml
     provider: openai
-    input:
-      doc: $spec_generated
-    output: {}
-    promptContent: 'resume my doc : {{doc}}'
-  - name: AI Story Generator
-    description: Create compelling stories with rich narratives
-    type: template
     templateUrl: >-
-      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/story-generator.yaml
-    provider: openai
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/mermaid-creator-v0.01.yaml
+    type: template
+  - description: Create compelling stories with rich narratives
     input:
       genre: $template_content
+      target_audience: '{{target_audience}}'
       theme: $mermaid_diagram
       word_count: '{{word_count}}'
-      target_audience: '{{target_audience}}'
+    name: AI Story Generator
     output:
-      story_structure: story_structure
       story: story
       story_elements: story_elements
+      story_structure: story_structure
     promptContent: |2
        ## Story Parameters
             Genre: {{genre}}
@@ -112,21 +98,21 @@ steps:
             </story_elements>
 
             END.
-  - name: AI Story Generator
-    description: Create compelling stories with rich narratives
-    type: template
+    provider: openai
     templateUrl: >-
       https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/story-generator.yaml
-    provider: openai
+    type: template
+  - description: Create compelling stories with rich narratives
     input:
       genre: $story_elements
+      target_audience: '{{target_audience}}'
       theme: $story
       word_count: '{{word_count}}'
-      target_audience: '{{target_audience}}'
+    name: AI Story Generator
     output:
-      story_structure: story_structure
       story: story
       story_elements: story_elements
+      story_structure: story_structure
     promptContent: |2
        ## Story Parameters
             Genre: {{genre}}
@@ -156,3 +142,7 @@ steps:
             </story_elements>
 
             END.
+    provider: openai
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/story-generator.yaml
+    type: template
