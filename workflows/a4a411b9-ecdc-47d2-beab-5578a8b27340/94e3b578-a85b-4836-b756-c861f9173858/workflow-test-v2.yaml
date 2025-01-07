@@ -7,8 +7,7 @@ steps:
   - name: story generator
     description: jnhgfvdcvfbg
     type: template
-    templateUrl: >-
-      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/story-generator.yaml
+    templateUrl: https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/story-generator.yaml
     provider: openai
     input:
       genre: '{{genre}}'
@@ -34,8 +33,7 @@ steps:
   - name: vefrcez
     description: frcedxs
     type: template
-    templateUrl: >-
-      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/vefrcez.yaml
+    templateUrl: https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/vefrcez.yaml
     provider: openai
     input:
       scene_text: $generated_story
