@@ -1,0 +1,21 @@
+name: Story teller v1
+version: 1.0.0
+description: story omg dov frejjn dazf
+author: youcef
+content: |-
+  tell me a story about {{title}}
+
+  ### Always include the Output in Format in xml tags :
+
+  <story generated>
+  [the story generated]
+  </story generated>
+input_variables:
+  title:
+    type: string
+    description: ''
+output_variables:
+  story generated:
+    type: string
+    description: the story generated
+model: anthropic.claude-3-5-sonnet-20241022-v2:0
