@@ -146,3 +146,64 @@ steps:
     templateUrl: >-
       https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/story-generator.yaml
     type: template
+  - name: Mermaid creator v0.01
+    description: hgfd
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/mermaid-creator-v0.01.yaml
+    provider: openai
+    input:
+      specs: $template_content
+    output:
+      mermaid_diagram: mermaid_diagram
+    promptContent: |-
+      as an expeert in mermaid creator , 
+
+      based on my specs : 
+      {{specs}}
+
+      give me a full mermaid diagrams for my specs
+
+      ### Always include the Output in Format in xml tags :
+
+      <mermaid_diagram>
+      [a mermaid diagram exploitation]
+      </mermaid_diagram>
+  - name: Mermaid creator v0.01
+    description: hgfd
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/a4a411b9-ecdc-47d2-beab-5578a8b27340/94e3b578-a85b-4836-b756-c861f9173858/mermaid-creator-v0.01.yaml
+    provider: openai
+    input:
+      specs: $story
+    output:
+      mermaid_diagram: mermaid_diagram
+    promptContent: |-
+      as an expeert in mermaid creator , 
+
+      based on my specs : 
+      {{specs}}
+
+      give me a full mermaid diagrams for my specs
+
+      ### Always include the Output in Format in xml tags :
+
+      <mermaid_diagram>
+      [a mermaid diagram exploitation]
+      </mermaid_diagram>
+  - name: Jira Tool with advanced features
+    description: EnhancedJira
+    type: tool
+    tool: EnhancedJira
+    input:
+      operation: '{{createFromTemplate}}'
+      templateJson: $story
+      project_key: '{{project_key}}'
+      feature_name: '{{feature_name}}'
+      host: '{{host}}'
+      email: '{{email}}'
+      token: '{{token}}'
+    output:
+      message: message
+      results: results
