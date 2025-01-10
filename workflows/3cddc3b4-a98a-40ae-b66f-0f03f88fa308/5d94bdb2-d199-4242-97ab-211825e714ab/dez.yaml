@@ -9,8 +9,8 @@ steps:
     type: tool
     tool: ApiServerCall
     input:
-      url: '{{url}}'
-      method: '{{method}}'
+      url: http://127.0.0.1:8001/api/raglite/query
+      method: POST
       data: '{{data}}'
       headers: '{{headers}}'
       token: '{{token}}'
