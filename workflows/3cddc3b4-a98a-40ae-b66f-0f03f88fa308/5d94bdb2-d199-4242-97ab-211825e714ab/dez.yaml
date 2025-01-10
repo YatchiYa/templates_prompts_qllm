@@ -1,0 +1,27 @@
+name: dez
+description: dez
+defaultProvider: openai
+organization_name: QuantaNova
+author_name: youcef
+steps:
+  - name: Document Space RAG
+    description: Generic REST API client for making HTTP requests to any endpoint
+    type: tool
+    tool: ApiServerCall
+    input:
+      url: http://127.0.0.1:8001/api/raglite/query
+      method: POST
+      data: '{{data}}'
+      headers: '{"accept":"application/json", "Content-Type":"application/json"}'
+      token: '{{token}}'
+    input_description:
+      url: Complete endpoint URL for the API call
+      method: HTTP method (GET, POST, PUT, DELETE, etc.)
+      data: Request payload/body to send with the request
+      headers: Custom HTTP headers for the request
+      token: Authentication token if required by the API
+    output: upload_response
+    output_description:
+      upload_response: >-
+        Response data from the API call, including status code, headers, and
+        response body
