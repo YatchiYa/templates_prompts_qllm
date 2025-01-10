@@ -1,88 +1,27 @@
-name: dez
-description: dez
+name: DEZ
+description: DEZ
 defaultProvider: openai
 organization_name: QuantaNova
 author_name: youcef
 steps:
-  - name: S3 File Retriever
-    description: Retrieves specific files from Amazon S3 storage
-    type: tool
-    tool: s3
-    input:
-      operation: load
-      bucket_name: quantalogic-bucket
-      key: '{{key}}'
-    output: template_content
-  - name: S3 Bulk File Downloader
-    description: Downloads multiple files from S3 to local storage
-    type: tool
-    tool: s3ToLocal
-    input:
-      bucket_name: '{{bucket_name}}'
-      keys: '{{load_files}}'
-      separator: '{{separator}}'
-    output: template_content
-  - name: LlamaIndex Document Search & Analysis
-    description: >-
-      Advanced RAG (Retrieval-Augmented Generation) system for document
-      processing and querying
-    type: tool
-    tool: LlamaIndexRAGV1
-    input:
-      directory: '{{directory}}'
-      query: '{{query}}'
-      embedModel: '{{embedModel}}'
-      topK: '{{topK}}'
-    output:
-      response: response
-      sources: sources
-  - name: Advanced Jira Template Manager
-    description: Sophisticated Jira issue creation system with template support
-    type: tool
-    tool: EnhancedJira
-    input:
-      operation: '{{createFromTemplate}}'
-      templateJson: '{{feature_templates}}'
-      project_key: '{{project_key}}'
-      feature_name: '{{feature_name}}'
-      host: '{{host}}'
-      email: '{{email}}'
-      token: '{{token}}'
-    output:
-      message: message
-      results: results
-  - name: Basic Jira Issue Creator
-    description: Streamlined tool for creating standard Jira tickets
-    type: tool
-    tool: JiraTool
-    input:
-      operation: create
-      projectKey: '{{projectKey}}'
-      summary: '{{summary}}'
-      description: '{{description}}'
-      issueType: '{{issueType}}'
-      storyPoints: '{{storyPoints}}'
-    output: createdTicket
-  - name: Universal API Client
+  - name: Document Space RAG
     description: Generic REST API client for making HTTP requests to any endpoint
     type: tool
     tool: ApiServerCall
     input:
-      url: '{{url}}'
-      method: '{{method}}'
+      url: http://127.0.0.1:8001/api/raglite/query
+      method: POST
       data: '{{data}}'
-      headers: '{{headers}}'
+      headers: '{"accept":"application/json", "Content-Type":"application/json"}'
       token: '{{token}}'
+    input_description:
+      url: Complete endpoint URL for the API call
+      method: HTTP method (GET, POST, PUT, DELETE, etc.)
+      data: Request payload/body to send with the request
+      headers: Custom HTTP headers for the request
+      token: Authentication token if required by the API
     output: upload_response
-  - name: Specialized Repository API Client
-    description: Customized API client for repository-specific operations and queries
-    type: tool
-    tool: CustomApiServerCall
-    input:
-      url: '{{url}}'
-      method: '{{method}}'
-      repository: '{{repository}}'
-      query: '{{query}}'
-      headers: '{{headers}}'
-      token: '{{token}}'
-    output: upload_response
+    output_description:
+      upload_response: >-
+        Response data from the API call, including status code, headers, and
+        response body
