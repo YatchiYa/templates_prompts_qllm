@@ -1,0 +1,30 @@
+name: qrorey
+version: 1.0.0
+description: fredz
+author: youcef
+content: |-
+  tell me a full story about {{title}}
+
+  and generate a mermaid diagram for it 
+
+  ### Always include the Output in Format in xml tags :
+
+  <mermaid_diagram>
+  [mermaid diagram generated ]
+  </mermaid_diagram>
+
+  <story_generated>
+  [full story generated with scenario]
+  </story_generated>
+input_variables:
+  title:
+    type: string
+    description: ''
+output_variables:
+  mermaid_diagram:
+    type: string
+    description: 'mermaid diagram generated '
+  story_generated:
+    type: string
+    description: full story generated with scenario
+model: gpt-4o-mini
