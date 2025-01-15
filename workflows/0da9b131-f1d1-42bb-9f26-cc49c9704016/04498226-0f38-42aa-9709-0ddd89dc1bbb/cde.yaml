@@ -1,0 +1,46 @@
+name: CDE
+description: CDSC
+defaultProvider: openai
+organization_name: mutualise_matomo
+author_name: youcef
+steps:
+  - name: Document Space RAG
+    description: Generic REST API client for making HTTP requests to any endpoint
+    type: tool
+    tool: ApiServerCall
+    input:
+      method: POST
+      headers: '{"accept":"application/json", "Content-Type":"application/json"}'
+      url: http://localhost:8001/api/raglite/query
+      token: '-'
+      data: '{{data}}'
+    input_description:
+      url: Complete endpoint URL for the API call
+      method: HTTP method (GET, POST, PUT, DELETE, etc.)
+      data: Request payload/body to send with the request
+      headers: Custom HTTP headers for the request
+      token: Authentication token if required by the API
+    output: upload_response
+    output_description:
+      upload_response: >-
+        Response data from the API call, including status code, headers, and
+        response body
+  - name: ddd
+    description: dddd
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/0da9b131-f1d1-42bb-9f26-cc49c9704016/04498226-0f38-42aa-9709-0ddd89dc1bbb/ddd.yaml
+    provider: openai
+    input:
+      synthese: $upload_response
+    input_description: {}
+    output: {}
+    output_description: {}
+    promptContent: >-
+      ANalyze my synthese 
+
+      {{synthese}}
+
+
+      i want you to give me a better one, detailled, with points, well
+      structured ...Etc
