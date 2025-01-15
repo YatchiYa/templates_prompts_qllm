@@ -1,0 +1,62 @@
+name: test _ v3
+description: gvrfgrbhn
+defaultProvider: openai
+organization_name: temp
+author_name: youcef
+steps:
+  - name: Document File Retriever
+    description: Retrieves specific files from Amazon S3 storage
+    type: tool
+    tool: s3
+    input:
+      operation: load
+      key: '{{load_key}}'
+      bucket_name: quantalogic-bucket
+    input_description:
+      operation: Type of S3 operation to perform (load)
+      bucket_name: Name of the S3 bucket to access
+      key: Specific key/path of the file to load from S3
+    output: template_content
+    output_description:
+      template_content: Retrieved file content from S3 bucket
+  - name: Sm
+    description: rfgvthytgrftgy
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/33c928bb-7283-4c61-bd23-edbe4c0bfe2f/47a346a7-1605-43b3-ac03-792505c7c779/sm.yaml
+    provider: aws-anthropic
+    input:
+      doc: $template_content
+    input_description: {}
+    output:
+      summary: summary
+    output_description: {}
+    promptContent: >-
+      Please analyze the content provided in {{doc}}, 
+
+
+
+      which pertains to the State Council tender From your analysis, 
+
+
+      create a summary that outlines the expected levels of expertise for the
+      following competencies: Data Science, Generative AI, and LLM Deployment. 
+
+
+      Please present this summary in a detailed table format, including columns
+      for competency, expected proficiency levels (e.g., beginner, intermediate,
+      advanced), 
+
+
+      key skills or knowledge required for each level, and any relevant trends
+      or insights connected to the tender's requirements.
+
+
+      ### Always include the Output in Format in xml tags :
+
+
+      <summary>
+
+      [the final summary generated]
+
+      </summary>
