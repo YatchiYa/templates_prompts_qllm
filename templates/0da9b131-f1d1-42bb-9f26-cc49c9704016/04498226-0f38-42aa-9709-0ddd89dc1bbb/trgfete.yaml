@@ -7,5 +7,5 @@ input_variables:
   doc:
     type: string
     description: ''
-model: gpt-4o-mini
-provider: openai
+model: anthropic.claude-3-5-sonnet-20241022-v2:0
+provider: aws-anthropic
