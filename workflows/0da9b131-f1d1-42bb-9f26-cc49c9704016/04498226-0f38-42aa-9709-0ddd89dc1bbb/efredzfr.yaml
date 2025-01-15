@@ -1,0 +1,62 @@
+name: EFREDZFR
+description: EDFDZSQ
+defaultProvider: openai
+organization_name: mutualise_matomo
+author_name: youcef
+steps:
+  - name: Documents Bulk File Downloader
+    description: Downloads multiple files from S3 to local storage
+    type: tool
+    tool: s3ToLocal
+    input:
+      bucket_name: quantalogic-bucket
+      keys: '{{load_files}}'
+      separator: '{{separator}}'
+    input_description:
+      bucket_name: Name of the source S3 bucket
+      keys: List of file keys/paths to download from S3
+      separator: Delimiter used to separate multiple file keys
+    output: template_content
+    output_description:
+      template_content: Collection of downloaded files from S3 stored locally
+  - name: LlamaIndex Document Search & Analysis
+    description: >-
+      Advanced RAG (Retrieval-Augmented Generation) system for document
+      processing and querying
+    type: tool
+    tool: LlamaIndexRAGV1
+    input:
+      embedModel: openai
+      topK: '5'
+      directory: $template_content
+      query: '{{query}}'
+    input_description:
+      directory: Path to the directory containing documents to analyze
+      query: The search query or question to process against the documents
+      embedModel: Name/type of embedding model to use for document processing
+      topK: Number of top relevant results to return
+    output:
+      response: response
+      sources: sources
+    output_description:
+      response: Generated answer based on document analysis
+      sources: Reference documents used to generate the response
+  - name: ddd
+    description: dddd
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/0da9b131-f1d1-42bb-9f26-cc49c9704016/04498226-0f38-42aa-9709-0ddd89dc1bbb/ddd.yaml
+    provider: openai
+    input:
+      synthese: $[object Object]
+    input_description: {}
+    output: {}
+    output_description: {}
+    promptContent: >-
+      ANalyze my synthese 
+
+      {{synthese}}
+
+
+      i want you to give me a better one, detailled, with points, well
+      structured ...Etc
