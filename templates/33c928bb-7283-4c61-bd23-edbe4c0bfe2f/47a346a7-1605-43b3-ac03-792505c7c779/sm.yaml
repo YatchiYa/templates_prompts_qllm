@@ -1,0 +1,43 @@
+name: Sm
+version: 1.0.0
+description: rfgvthytgrftgy
+author: youcef
+content: >-
+  Please analyze the content provided in {{doc}}, 
+
+
+
+  which pertains to the State Council tender From your analysis, 
+
+
+  create a summary that outlines the expected levels of expertise for the
+  following competencies: Data Science, Generative AI, and LLM Deployment. 
+
+
+  Please present this summary in a detailed table format, including columns for
+  competency, expected proficiency levels (e.g., beginner, intermediate,
+  advanced), 
+
+
+  key skills or knowledge required for each level, and any relevant trends or
+  insights connected to the tender's requirements.
+
+
+  ### Always include the Output in Format in xml tags :
+
+
+  <summary>
+
+  [the final summary generated]
+
+  </summary>
+input_variables:
+  doc:
+    type: string
+    description: ''
+output_variables:
+  summary:
+    type: string
+    description: the final summary generated
+model: anthropic.claude-3-5-sonnet-20241022-v2:0
+provider: aws-anthropic
