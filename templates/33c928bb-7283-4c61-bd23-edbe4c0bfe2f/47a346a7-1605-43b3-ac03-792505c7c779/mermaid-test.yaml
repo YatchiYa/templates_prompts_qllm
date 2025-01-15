@@ -1,0 +1,38 @@
+name: Mermaid test
+version: 1.0.0
+description: ftgryujyhngf
+author: youcef
+content: >-
+  Analyze the provided code snippet and create a well-structured Mermaid diagram
+  that illustrates its architecture and flow. Be sure to represent key
+  components like functions, classes, and data flows. 
+
+      Here’s the code you need to analyze:
+      {{code}}
+
+      Please include:
+      1. A brief summary of the code's functionality.
+      2. Key elements to be represented in the diagram.
+      3. An example Mermaid diagram format for reference, if applicable.
+      4. An explanation of the diagram produced.
+
+      Ensuring clarity and accuracy in your response will greatly enhance my understanding of the code's structure.
+
+  ### Always include the Output in Format in xml tags :
+
+
+  <mermaid_diagram>
+
+  [the mermaid diagram final]
+
+  </mermaid_diagram>
+input_variables:
+  code:
+    type: string
+    description: ''
+output_variables:
+  mermaid_diagram:
+    type: string
+    description: the mermaid diagram final
+model: anthropic.claude-3-5-sonnet-20241022-v2:0
+provider: aws-anthropic
