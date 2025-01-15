@@ -1,0 +1,67 @@
+name: vrrgvrrvvrf
+description: vrvrvr
+defaultProvider: openai
+organization_name: temp
+author_name: youcef
+steps:
+  - name: Documents Bulk File Downloader
+    description: Downloads multiple files from S3 to local storage
+    type: tool
+    tool: s3ToLocal
+    input:
+      bucket_name: quantalogic-bucket
+      keys: '{{load_files}}'
+      separator: ','
+    input_description:
+      bucket_name: Name of the source S3 bucket
+      keys: List of file keys/paths to download from S3
+      separator: Delimiter used to separate multiple file keys
+    output: template_content
+    output_description:
+      template_content: Collection of downloaded files from S3 stored locally
+  - name: Document Space (Code2Prompt)
+    description: Code 2 prompt API client for making HTTP requests to any endpoint
+    type: tool
+    tool: ApiServiceCallC1
+    input:
+      method: POST
+      headers: '{"accept":"application/json", "Content-Type":"application/json"}'
+      url: http://localhost:8001/api/raglite/parse_folder
+      token: '-'
+      data: $template_content
+    input_description:
+      url: Complete endpoint URL for the API call
+      method: HTTP method (GET, POST, PUT, DELETE, etc.)
+      data: Request payload/body to send with the request
+      headers: Custom HTTP headers for the request
+      token: Authentication token if required by the API
+    output: upload_response
+    output_description:
+      upload_response: >-
+        Response data from the API call, including status code, headers, and
+        response body
+  - name: TEST V22
+    description: rftgyhugtf
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/33c928bb-7283-4c61-bd23-edbe4c0bfe2f/47a346a7-1605-43b3-ac03-792505c7c779/test-v22.yaml
+    provider: openai
+    input:
+      doc: $upload_response
+    input_description: {}
+    output:
+      final_article: final_article
+    output_description: {}
+    promptContent: |-
+      Anlyze my full document, and give me a full article ,
+
+      i need a full article with different sections,
+      a full article that i can publish in argvix
+
+      my document {{doc}}
+
+      ### Always include the Output in Format in xml tags :
+
+      <final_article>
+      [the final article generated]
+      </final_article>
