@@ -1,0 +1,27 @@
+name: TEST V22
+version: 1.0.0
+description: rftgyhugtf
+author: youcef
+content: |-
+  Anlyze my full document, and give me a full article ,
+
+  i need a full article with different sections,
+  a full article that i can publish in argvix
+
+  my document {{doc}}
+
+  ### Always include the Output in Format in xml tags :
+
+  <final_article>
+  [the final article generated]
+  </final_article>
+input_variables:
+  doc:
+    type: string
+    description: YTGYHUTG
+output_variables:
+  final_article:
+    type: string
+    description: the final article generated
+model: gpt-4o-mini
+provider: openai
