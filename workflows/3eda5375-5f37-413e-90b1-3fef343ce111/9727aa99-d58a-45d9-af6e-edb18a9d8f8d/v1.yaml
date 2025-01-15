@@ -1,0 +1,42 @@
+name: V1
+description: HTGRYHU
+defaultProvider: openai
+organization_name: seed --full-refresh
+author_name: mutualise_matomo
+steps:
+  - name: Document File Retriever
+    description: Retrieves specific files from Amazon S3 storage
+    type: tool
+    tool: s3
+    input:
+      operation: load
+      key: '{{load_key}}'
+      bucket_name: quantalogic-bucket
+    input_description:
+      operation: Type of S3 operation to perform (load)
+      bucket_name: Name of the S3 bucket to access
+      key: Specific key/path of the file to load from S3
+    output: template_content
+    output_description:
+      template_content: Retrieved file content from S3 bucket
+  - name: Imp
+    description: rtfdrftgbhgrfv
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/3eda5375-5f37-413e-90b1-3fef343ce111/9727aa99-d58a-45d9-af6e-edb18a9d8f8d/imp.yaml
+    provider: openai
+    input:
+      article: $template_content
+    input_description: {}
+    output:
+      improved_article: improved_article
+    output_description: {}
+    promptContent: |-
+      improve my article 
+      {{article}}
+
+      ### Always include the Output in Format in xml tags :
+
+      <improved_article>
+      [the improved article final]
+      </improved_article>
