@@ -1,0 +1,17 @@
+name: ddd
+version: 1.0.0
+description: dddd
+author: youcef
+content: >-
+  ANalyze my synthese 
+
+  {{synthese}}
+
+
+  i want you to give me a better one, detailled, with points, well structured
+  ...Etc
+input_variables:
+  synthese:
+    type: string
+    description: ''
+model: gpt-4o-mini
