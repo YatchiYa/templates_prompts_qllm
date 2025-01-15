@@ -1,0 +1,33 @@
+name: ARTICLE V2
+version: 1.0.0
+description: YTGRFGTYUJ
+author: youcef
+content: >-
+  Anlyze my full document, and give me a full article ,
+
+
+  i need a summary, sommaire, conclusion, and every part needed for an argvix
+  article
+
+
+  my document {{doc}}
+
+
+  ### Always include the Output in Format in xml tags :
+
+
+  <final_article>
+
+  [my final article generated ]
+
+  </final_article>
+input_variables:
+  doc:
+    type: string
+    description: ''
+output_variables:
+  final_article:
+    type: string
+    description: 'my final article generated '
+model: anthropic.claude-3-5-sonnet-20241022-v2:0
+provider: aws-anthropic
