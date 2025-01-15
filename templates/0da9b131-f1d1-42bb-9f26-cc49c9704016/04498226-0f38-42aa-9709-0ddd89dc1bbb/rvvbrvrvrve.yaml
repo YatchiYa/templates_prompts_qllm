@@ -1,0 +1,32 @@
+name: rvvbrvrvrve
+version: 1.0.0
+description: veverv
+author: youcef
+content: >-
+  Improve my synthese , give me more detailled informations, and bullet points
+  ..Etc
+
+
+  my article : {{article}}
+
+
+
+
+  ### Always include the Output in Format in xml tags :
+
+
+  <final_result>
+
+  [the final result of my synthese]
+
+  </final_result>
+input_variables:
+  article:
+    type: string
+    description: ''
+output_variables:
+  final_result:
+    type: string
+    description: the final result of my synthese
+model: anthropic.claude-3-5-sonnet-20241022-v2:0
+provider: aws-anthropic
