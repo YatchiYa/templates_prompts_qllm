@@ -1,0 +1,150 @@
+name: TEST CODE REVIEWS
+description: YTGRFTGYHGTRFFGV
+defaultProvider: openai
+organization_name: temp
+author_name: youcef
+steps:
+  - name: Documents Bulk File Downloader
+    description: Downloads multiple files from S3 to local storage
+    type: tool
+    tool: s3ToLocal
+    input:
+      bucket_name: quantalogic-bucket
+      keys: '{{load_files}}'
+      separator: ','
+    input_description:
+      bucket_name: Name of the source S3 bucket
+      keys: List of file keys/paths to download from S3
+      separator: Delimiter used to separate multiple file keys
+    output: template_content
+    output_description:
+      template_content: Collection of downloaded files from S3 stored locally
+  - name: Document Space (Code2Prompt)
+    description: Code 2 prompt API client for making HTTP requests to any endpoint
+    type: tool
+    tool: ApiServiceCallC1
+    input:
+      method: POST
+      headers: '{"accept":"application/json", "Content-Type":"application/json"}'
+      url: http://localhost:8001/api/raglite/parse_folder
+      token: '-'
+      data: $template_content
+    input_description:
+      url: Complete endpoint URL for the API call
+      method: HTTP method (GET, POST, PUT, DELETE, etc.)
+      data: Request payload/body to send with the request
+      headers: Custom HTTP headers for the request
+      token: Authentication token if required by the API
+    output: upload_response
+    output_description:
+      upload_response: >-
+        Response data from the API call, including status code, headers, and
+        response body
+  - name: Code review v0.1
+    description: simple code review
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/33c928bb-7283-4c61-bd23-edbe4c0bfe2f/47a346a7-1605-43b3-ac03-792505c7c779/code-review-v0.1.yaml
+    provider: aws-anthropic
+    input:
+      code: $upload_response
+    input_description: {}
+    output:
+      summary: summary
+      Recommendations: Recommendations
+    output_description: {}
+    promptContent: |2-
+       As an expert in coding analysis and documentation, please analyze the following Python code: {{code}}. 
+
+
+      Provide:
+          1. A summary of the code's functionality and intended purpose.
+          2. In-depth comments on critical sections, including any significant algorithms or design patterns.
+          3. Recommendations for enhancements concerning performance and maintainability.
+          4. A structured outline for documentation including:
+       - Introduction
+             - Usage examples
+             - Code walkthrough
+             - Common issues and resolutions
+          Your analysis should be detailed, providing valuable insights for a developer to create clear and comprehensive documentation.
+
+      ### Always include the Output in Format in xml tags :
+
+      <summary>
+      [final summary of my code]
+      </summary>
+
+      <Recommendations>
+      [Recommendations for enhancements]
+      </Recommendations>
+  - name: Mermaid test
+    description: ftgryujyhngf
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/33c928bb-7283-4c61-bd23-edbe4c0bfe2f/47a346a7-1605-43b3-ac03-792505c7c779/mermaid-test.yaml
+    provider: aws-anthropic
+    input:
+      code: $upload_response
+    input_description: {}
+    output:
+      mermaid_diagram: mermaid_diagram
+    output_description: {}
+    promptContent: >-
+      Analyze the provided code snippet and create a well-structured Mermaid
+      diagram that illustrates its architecture and flow. Be sure to represent
+      key components like functions, classes, and data flows. 
+
+          Here’s the code you need to analyze:
+          {{code}}
+
+          Please include:
+          1. A brief summary of the code's functionality.
+          2. Key elements to be represented in the diagram.
+          3. An example Mermaid diagram format for reference, if applicable.
+          4. An explanation of the diagram produced.
+
+          Ensuring clarity and accuracy in your response will greatly enhance my understanding of the code's structure.
+
+      ### Always include the Output in Format in xml tags :
+
+
+      <mermaid_diagram>
+
+      [the mermaid diagram final]
+
+      </mermaid_diagram>
+  - name: Article generator
+    description: htgfrvtgbhynbgfv
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/33c928bb-7283-4c61-bd23-edbe4c0bfe2f/47a346a7-1605-43b3-ac03-792505c7c779/article-generator.yaml
+    provider: openai
+    input:
+      code: $upload_response
+      Summury: $summary
+    input_description: {}
+    output:
+      final_article: final_article
+    output_description: {}
+    promptContent: |2-
+
+          Using the code snippet provided below, craft a comprehensive technical article that the following components:
+          1. **Introduction:** Briefly describe the purpose of the code and its relevance within the broader context of programming.
+          2. **Code Overview:** Summarize the functionality of the code, highlighting key features and design choices.
+          3 **Use Cases:** Provide at least three practical examples of how this code might be applied in real-world scenarios.
+          4. **Detailed Explanation:** Break down the code line-by-line, explaining the logic and reasoning behind each part.
+          5. **Best Practices:** Discuss best practices, potential pitfalls, or optimizations that could enhance the code's performance or readability.
+          6. **Conclusion:** Summarize the main points and suggest further reading or exploration for the reader.
+          7. **Reflection:** Finally, provide a short reflection on well the article addresses the defined objectives and what could be improved.
+          
+          Code Snippet:
+          {{code}}
+
+          Summury : 
+           {{Summury}}
+
+      ### Always include the Output in Format in xml tags :
+
+      <final_article>
+      [my final article generated]
+      </final_article>
