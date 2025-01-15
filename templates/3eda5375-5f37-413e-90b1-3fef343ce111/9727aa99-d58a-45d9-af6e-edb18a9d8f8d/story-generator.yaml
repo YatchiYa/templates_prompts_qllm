@@ -1,0 +1,54 @@
+name: Story generator
+version: 1.0.0
+description: story generator simple
+author: mutualise_matomo
+content: >-
+  Create a captivating story based on the title '{{title}}'. Consider the
+  following guidelines:
+
+
+  Genre: Please specify the genre (e.g., fantasy, romance, science fiction).
+
+  Tone: Should the story be light-hearted, serious, or suspenseful?
+
+  Length: Aim for approximately 300-500 words.
+
+  Key Themes: Explore at least one key theme (e.g., friendship, loss,
+  discovery).
+
+  Character Development: Introduce at least two main characters with distinct
+  motivations and backgrounds.
+
+  Conflict: What is the main conflict driving the story? How do the characters
+  respond to it?
+
+  Feel free to use the following example as a reference:
+
+
+  Title: 'The Whispering Woods'
+
+  Prompt: In a mystical forest where trees speak secrets, a young girl seeks to
+  uncover her family's hidden past, leading to unexpected alliances and
+  revelations.
+
+
+
+
+  ### Always include the Output in Format in xml tags :
+
+
+  <final_story_generated>
+
+  [the final story generated]
+
+  </final_story_generated>
+input_variables:
+  title:
+    type: string
+    description: ''
+output_variables:
+  final_story_generated:
+    type: string
+    description: the final story generated
+model: anthropic.claude-3-5-sonnet-20241022-v2:0
+provider: aws-anthropic
