@@ -1,0 +1,23 @@
+name: Imp
+version: 1.0.0
+description: rtfdrftgbhgrfv
+author: mutualise_matomo
+content: |-
+  improve my article 
+  {{article}}
+
+  ### Always include the Output in Format in xml tags :
+
+  <improved_article>
+  [the improved article final]
+  </improved_article>
+input_variables:
+  article:
+    type: string
+    description: ''
+output_variables:
+  improved_article:
+    type: string
+    description: the improved article final
+model: gpt-4o-mini
+provider: openai
