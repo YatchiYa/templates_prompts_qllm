@@ -1,0 +1,39 @@
+name: Article generator
+version: 1.0.0
+description: htgfrvtgbhynbgfv
+author: youcef
+content: |2-
+
+      Using the code snippet provided below, craft a comprehensive technical article that the following components:
+      1. **Introduction:** Briefly describe the purpose of the code and its relevance within the broader context of programming.
+      2. **Code Overview:** Summarize the functionality of the code, highlighting key features and design choices.
+      3 **Use Cases:** Provide at least three practical examples of how this code might be applied in real-world scenarios.
+      4. **Detailed Explanation:** Break down the code line-by-line, explaining the logic and reasoning behind each part.
+      5. **Best Practices:** Discuss best practices, potential pitfalls, or optimizations that could enhance the code's performance or readability.
+      6. **Conclusion:** Summarize the main points and suggest further reading or exploration for the reader.
+      7. **Reflection:** Finally, provide a short reflection on well the article addresses the defined objectives and what could be improved.
+      
+      Code Snippet:
+      {{code}}
+
+      Summury : 
+       {{Summury}}
+
+  ### Always include the Output in Format in xml tags :
+
+  <final_article>
+  [my final article generated]
+  </final_article>
+input_variables:
+  code:
+    type: string
+    description: ''
+  Summury:
+    type: string
+    description: ''
+output_variables:
+  final_article:
+    type: string
+    description: my final article generated
+model: gpt-4o-mini
+provider: openai
