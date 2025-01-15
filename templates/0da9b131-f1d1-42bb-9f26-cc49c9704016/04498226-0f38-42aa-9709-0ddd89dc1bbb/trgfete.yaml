@@ -1,0 +1,11 @@
+name: trgfete
+version: 1.0.0
+description: trftgfed
+author: youcef
+content: give me a better synthesis about my doc {{doc}}
+input_variables:
+  doc:
+    type: string
+    description: ''
+model: gpt-4o-mini
+provider: openai
