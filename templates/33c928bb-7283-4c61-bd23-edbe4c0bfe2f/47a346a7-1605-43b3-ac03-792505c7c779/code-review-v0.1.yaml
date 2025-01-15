@@ -1,0 +1,41 @@
+name: Code review v0.1
+version: 1.0.0
+description: simple code review
+author: youcef
+content: |2-
+   As an expert in coding analysis and documentation, please analyze the following Python code: {{code}}. 
+
+
+  Provide:
+      1. A summary of the code's functionality and intended purpose.
+      2. In-depth comments on critical sections, including any significant algorithms or design patterns.
+      3. Recommendations for enhancements concerning performance and maintainability.
+      4. A structured outline for documentation including:
+   - Introduction
+         - Usage examples
+         - Code walkthrough
+         - Common issues and resolutions
+      Your analysis should be detailed, providing valuable insights for a developer to create clear and comprehensive documentation.
+
+  ### Always include the Output in Format in xml tags :
+
+  <summary>
+  [final summary of my code]
+  </summary>
+
+  <Recommendations>
+  [Recommendations for enhancements]
+  </Recommendations>
+input_variables:
+  code:
+    type: string
+    description: my code base
+output_variables:
+  summary:
+    type: string
+    description: final summary of my code
+  Recommendations:
+    type: string
+    description: Recommendations for enhancements
+model: anthropic.claude-3-5-sonnet-20241022-v2:0
+provider: aws-anthropic
