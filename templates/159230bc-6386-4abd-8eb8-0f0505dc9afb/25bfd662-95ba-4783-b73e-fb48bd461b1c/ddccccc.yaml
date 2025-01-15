@@ -1,0 +1,50 @@
+name: ddccccc
+version: 1.0.0
+description: ccccc
+author: eeee
+content: |
+  give me a meraid example like : 
+
+  ```mermaid
+  graph TD
+      A[Client Application] -->|Requests| B[API Gateway]
+      
+      B --> C[User Service]
+      B --> D[Product Service]
+      B --> E[Order Service]
+      B --> F[Payment Service]
+      B --> G[Inventory Service]
+      B --> H[Shipping Service]
+      B --> I[Review Service]
+      
+      C -->|Database Requests| J[User Database]
+      D -->|Database Requests| K[Product Database]
+      E -->|Database Requests| L[Order Database]
+      F -->|Database Requests| M[Payment Database]
+      G -->|Database Requests| N[Inventory Database]
+      H -->|Database Requests| O[Shipping Database]
+      I -->|Database Requests| P[Review Database]
+      
+      B --> Q[Authentication Service]
+      Q --> R[JWT Token Service]
+      
+      style A fill:#f9f,stroke:#333,stroke-width:2px
+      style B fill:#ccf,stroke:#333,stroke-width:2px
+      style C fill:#ffc,stroke:#333,stroke-width:2px
+      style D fill:#ffc,stroke:#333,stroke-width:2px
+      style E fill:#ffc,stroke:#333,stroke-width:2px
+      style F fill:#ffc,stroke:#333,stroke-width:2px
+      style G fill:#ffc,stroke:#333,stroke-width:2px
+      style H fill:#ffc,stroke:#333,stroke-width:2px
+      style I fill:#ffc,stroke:#333,stroke-width:2px
+      style J fill:#fff,stroke:#333,stroke-width:1px
+      style K fill:#fff,stroke:#333,stroke-width:1px
+      style L fill:#fff,stroke:#333,stroke-width:1px
+      style M fill:#fff,stroke:#333,stroke-width:1px
+      style N fill:#fff,stroke:#333,stroke-width:1px
+      style O fill:#fff,stroke:#333,stroke-width:1px
+      style P fill:#fff,stroke:#333,stroke-width:1px
+      style Q fill:#cef,stroke:#333,stroke-width:2px
+      style R fill:#cfc,stroke:#333,stroke-width:1px
+  ```
+model: gpt-4o-mini
