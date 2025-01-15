@@ -1,0 +1,44 @@
+name: dez
+description: dze
+defaultProvider: openai
+organization_name: mutualise_matomo
+author_name: youcef
+steps:
+  - name: Documents Bulk File Downloader
+    description: Downloads multiple files from S3 to local storage
+    type: tool
+    tool: s3ToLocal
+    input:
+      bucket_name: quantalogic-bucket
+      keys: '{{load_files}}'
+      separator: '{{separator}}'
+    input_description:
+      bucket_name: Name of the source S3 bucket
+      keys: List of file keys/paths to download from S3
+      separator: Delimiter used to separate multiple file keys
+    output: template_content
+    output_description:
+      template_content: Collection of downloaded files from S3 stored locally
+  - name: Specialized Repository API Client
+    description: Customized API client for repository-specific operations and queries
+    type: tool
+    tool: CustomApiServerCall
+    input:
+      url: '{{url}}'
+      method: '{{method}}'
+      repository: $template_content
+      query: '{{query}}'
+      headers: '{{headers}}'
+      token: '{{token}}'
+    input_description:
+      url: Base URL of the API endpoint
+      method: HTTP method for the request
+      repository: Target repository identifier or path
+      query: Specific query parameters or search criteria
+      headers: Custom HTTP headers for the request
+      token: Authentication token for API access
+    output: upload_response
+    output_description:
+      upload_response: >-
+        Formatted response from the repository API, including query results and
+        metadata
