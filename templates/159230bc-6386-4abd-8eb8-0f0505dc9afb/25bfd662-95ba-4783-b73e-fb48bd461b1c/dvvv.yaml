@@ -1,0 +1,6 @@
+name: dvvv
+version: 1.0.0
+description: vvvv
+author: eeee
+content: 'give me a random mermaid diagram '
+model: gpt-4o-mini
