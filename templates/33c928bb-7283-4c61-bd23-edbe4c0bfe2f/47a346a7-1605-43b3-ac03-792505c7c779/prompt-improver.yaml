@@ -45,17 +45,18 @@ content: >-
      - Refine your prompt based on these insights and repeat the evaluation process.
 
   6. **Final Review:**
+     - Hightlight the expertise field that should be used, like : As an expert in (field)...
      - Provide a comprehensive explanation of your analysis, techniques applied, and evaluations   
      - Summarize the iterative refinement process and outcomes.
 
   ### Always include the Output in Format in xml tags :
 
 
-  <final_prompt_improved>
+  <prompt_final>
 
   [the final prompt improved]
 
-  </final_prompt_improved>
+  </prompt_final>
 input_variables:
   prompt:
     type: string
@@ -64,7 +65,7 @@ input_variables:
     type: string
     description: 'target audience '
 output_variables:
-  final_prompt_improved:
+  prompt_final:
     type: string
     description: the final prompt improved
 model: anthropic.claude-3-5-sonnet-20241022-v2:0
