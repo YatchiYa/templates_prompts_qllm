@@ -1,0 +1,111 @@
+name: yhgfvdgh
+description: hgbfvbhj,k
+defaultProvider: openai
+organization_name: temp
+author_name: youcef
+visibility: Personal
+steps:
+  - name: Documents Bulk Load / Retrieve [PATH]
+    description: >-
+      Télécharge plusieurs fichiers depuis l'espace documentaire personnel ou de
+      l'organisation
+    type: tool
+    tool: s3ToLocal
+    input:
+      bucket_name: undefined
+      keys: '{{load_files}}'
+      separator: ','
+    input_description:
+      bucket_name: Source de données à charger
+      keys: Liste des clés/chemins des fichiers à télécharger / utiliser.
+      separator: Délimiteur utilisé pour séparer plusieurs clés de fichiers
+    output: path_download
+    output_description:
+      path_download: >-
+        Collection de fichiers téléchargés depuis votre workspace, sauvegardés
+        localement Puis supprimés à la fin de l'execution du workflow
+  - name: Code2Prompt, Document Space parser [CONTEXT]
+    description: >-
+      Outil Code2Prompt pour transformer le contenu d'un dossier en fichier
+      Markdown unique
+    type: tool
+    tool: ApiServiceCallC1
+    input:
+      method: POST
+      headers: '{"accept":"application/json", "Content-Type":"application/json"}'
+      url: http://localhost:8001/api/raglite/parse_folder
+      token: '-'
+      data: $path_download
+    input_description:
+      url: URL complète pour analyser le dossier
+      method: Méthode HTTP pour exécuter la requête (par exemple, POST)
+      data: Chemin vers le dossier à analyser
+      headers: En-têtes personnalisés pour la requête
+      token: Jeton d'authentification si requis
+    output: upload_response
+    output_description:
+      upload_response: Fichier Markdown généré contenant tout le contenu du dossier analysé
+  - name: Doc summarize
+    description: thtgtrtnj,jhngf
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/33c928bb-7283-4c61-bd23-edbe4c0bfe2f/47a346a7-1605-43b3-ac03-792505c7c779/doc-summarize.yaml
+    provider: openai
+    input:
+      doc: $upload_response
+    input_description: {}
+    output:
+      final_summarize: final_summarize
+    output_description: {}
+    promptContent: >-
+      As an expert in document analysis and summarization, please provide a
+      concise and comprehensive summary of the following document:
+
+
+      {{doc}}
+
+
+      Your summary should:
+
+      - Clearly identify the main themes, topics, and key points covered in the
+      document
+
+      - Synthesize and analyze the most relevant and insightful information
+
+      - Present the summary in a clear, well-structured, and in-depth manner
+      tailored to the needs of expert-level users
+
+      - Provide a nuanced and thoughtful understanding of the document's content
+      and context
+
+
+      Follow a step-by-step approach, covering the necessary reasoning and
+      decision-making processes to deliver a high-quality, expert-level summary.
+
+
+      Steps:
+
+      1. Thoroughly analyze the document to understand its purpose, key
+      information, and target audience.
+
+      2. Identify the main themes, topics, and salient points that should be
+      highlighted in the summary.
+
+      3. Synthesize the information in a clear and concise manner, drawing
+      connections and providing insights.
+
+      4. Structure the summary to ensure it is well-organized, comprehensive,
+      and tailored to the needs of expert users.
+
+      5. Review the summary to ensure it is clear, nuanced, and comprehensive,
+      meeting the specified requirements.
+
+
+      ### Always include the Output in Format in xml tags :
+
+
+      <final_summarize>
+
+      [The final summarize generated]
+
+      </final_summarize>
