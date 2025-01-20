@@ -1,9 +1,9 @@
 name: dez
-description: dez
+description: dzedez
 defaultProvider: openai
 organization_name: temp
 author_name: youcef
-visibility: Personal
+visibility: Private
 steps:
   - name: Document Space Query
     description: >-
@@ -17,7 +17,7 @@ steps:
       url: http://localhost:8001/api/raglite/query
       token: '-'
       keys: '{{load_files}}'
-      data: '{{data}}'
+      query: '{{query}}'
     input_description:
       url: URL complète pour l'interrogation des documents
       method: Méthode d'envoi de la requête (POST, GET, etc.)
