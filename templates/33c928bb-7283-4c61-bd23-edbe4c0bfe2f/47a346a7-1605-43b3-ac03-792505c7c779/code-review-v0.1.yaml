@@ -1,0 +1,24 @@
+name: Code review v0.1
+version: 1.0.0
+description: the review of the code included as a context
+author: youcef
+content: |-
+  make a review about my code : 
+
+  {{code}}
+
+  ### Always include the Output in Format in xml tags :
+
+  <review>
+  [the review of the code]
+  </review>
+input_variables:
+  code:
+    type: string
+    description: ''
+output_variables:
+  review:
+    type: string
+    description: the review of the code
+model: anthropic.claude-3-5-sonnet-20241022-v2:0
+provider: aws-anthropic
