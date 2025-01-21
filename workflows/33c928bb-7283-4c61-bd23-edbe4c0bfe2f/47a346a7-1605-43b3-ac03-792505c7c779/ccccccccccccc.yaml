@@ -1,0 +1,94 @@
+name: ccccccccccccc
+description: ccccc
+defaultProvider: openai
+organization_name: temp
+author_name: youcef
+visibility: Public
+steps:
+  - name: Documents Bulk Load / Retrieve [PATH]
+    description: >-
+      Télécharge plusieurs fichiers depuis l'espace documentaire personnel ou de
+      l'organisation
+    type: tool
+    tool: s3ToLocal
+    input:
+      bucket_name: quantalogic-bucket
+      keys: '{{load_files}}'
+      separator: ','
+    input_description:
+      bucket_name: Source de données à charger
+      keys: Liste des clés/chemins des fichiers à télécharger / utiliser.
+      separator: Délimiteur utilisé pour séparer plusieurs clés de fichiers
+    output: path_download
+    output_description:
+      path_download: >-
+        Collection de fichiers téléchargés depuis votre workspace, sauvegardés
+        localement Puis supprimés à la fin de l'execution du workflow
+  - name: Prompt improver
+    description: Prompt improver hosted
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/33c928bb-7283-4c61-bd23-edbe4c0bfe2f/47a346a7-1605-43b3-ac03-792505c7c779/prompt-improver.yaml
+    provider: aws-anthropic
+    input:
+      prompt: $path_download
+      target_audience: '{{target_audience}}'
+    input_description: {}
+    output:
+      prompt_final: prompt_final
+    output_description: {}
+    promptContent: >-
+      As an elite prompt engineer, your mission is to enhance the effectiveness
+      of the following input prompt : 
+
+
+      {{prompt}} 
+
+
+      Please follow these steps:
+
+
+      1. **Analysis:**
+         - Define the primary goal of the prompt.
+         - Identify the target audience, specifying their knowledge level (e.g., beginner, intermediate, expert).
+            target adunce {{target_audience}}
+         - List any constraints or specific conditions tied the prompt.
+         - Evaluate areas for improvement or weaknesses present in the original prompt.
+
+      2. **Application of Advanced Techniques:**
+         - Utilize Chain of Thought (CoT) by breaking down the necessary reasoning and decision-making processes step-by-step.
+         - Implement Few-Shot by providing [insert two to three relevant examples similar to {{prompt}}].
+
+      3. **Crafting the Improved Prompt:**
+         - Create a revised version of the prompt that is:
+           - Clear and unambiguous in its intent
+           - Specific and detailed to guide AI
+           - Structured to elicit high-quality responses
+           - Versatile enough for application in various contexts
+
+      4. **Evaluation:**
+         - Assess your revision based on the following criteria:
+           - Clarity: Is it understandable?
+           - Specificity: Are the guidelines and direct?
+           - Engagement: Is it likely to inspire thoughtful discourse?
+           - Versatility: Can it be applied effectively in different scenarios?
+           - Depth: Does it promote nuanced and comprehensive responses?
+
+      5. **Refinement:**
+         - Critically analyze your improved prompt the quality metrics identified.
+         - Identify at least one area where enhancement is possible.
+         - Refine your prompt based on these insights and repeat the evaluation process.
+
+      6. **Final Review:**
+         - Hightlight the expertise field that should be used, like : As an expert in (field)...
+         - Provide a comprehensive explanation of your analysis, techniques applied, and evaluations   
+         - Summarize the iterative refinement process and outcomes.
+
+      ### Always include the Output in Format in xml tags :
+
+
+      <prompt_final>
+
+      [the final prompt improved]
+
+      </prompt_final>
