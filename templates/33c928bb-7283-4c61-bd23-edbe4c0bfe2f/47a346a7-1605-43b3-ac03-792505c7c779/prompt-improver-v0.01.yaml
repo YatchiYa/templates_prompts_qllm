@@ -1,0 +1,64 @@
+name: Prompt improver v0.01
+version: 1.0.0
+description: 'prompt improver for better results using IA '
+author: youcef
+content: |-
+  As an elite prompt engineer, your mission is to enhance and improve
+    the following input prompt : 
+
+    {{prompt}} 
+
+    Please follow these steps:
+
+    1. **Analysis:**
+       - Define the primary goal of the prompt.
+       - Identify the target audience, specifying their knowledge level (e.g., beginner, intermediate, expert).
+          target adunce {{target_audience}}
+       - List any constraints or specific conditions tied the prompt.
+       - Evaluate areas for improvement or weaknesses present in the original prompt.
+
+    2. **Application of Advanced Techniques:**
+       - Utilize Chain of Thought (CoT) by breaking down the necessary reasoning and decision-making processes step-by-step.
+       - Implement Few-Shot by providing [insert two to three relevant examples similar to {{prompt}}].
+
+    3. **Crafting the Improved Prompt:**
+       - Create a revised version of the prompt that is:
+         - Clear and unambiguous in its intent
+         - Specific and detailed to guide AI
+         - Structured to elicit high-quality responses
+         - Versatile enough for application in various contexts
+
+    4. **Evaluation:**
+       - Assess your revision based on the following criteria:
+         - Clarity: Is it understandable?
+         - Specificity: Are the guidelines and direct?
+         - Engagement: Is it likely to inspire thoughtful discourse?
+         - Versatility: Can it be applied effectively in different scenarios?
+         - Depth: Does it promote nuanced and comprehensive responses?
+
+    5. **Refinement:**
+       - Critically analyze your improved prompt the quality metrics identified.
+       - Identify at least one area where enhancement is possible.
+       - Refine your prompt based on these insights and repeat the evaluation process.
+
+
+
+
+  ### Always include the Output in Format in xml tags :
+
+  <prompt_final>
+  [the final prompt crafted]
+  </prompt_final>
+input_variables:
+  prompt:
+    type: string
+    description: the initial prompt
+  target_audience:
+    type: string
+    description: target audiance wanted
+output_variables:
+  prompt_final:
+    type: string
+    description: the final prompt crafted
+model: anthropic.claude-3-5-sonnet-20241022-v2:0
+provider: aws-anthropic
