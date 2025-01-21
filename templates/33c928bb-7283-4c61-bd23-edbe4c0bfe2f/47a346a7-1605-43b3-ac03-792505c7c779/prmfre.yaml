@@ -16,6 +16,7 @@ content: |2-
      Follow these steps in your prompt engineering process:
      
      1. Analyze the given prompt:
+        - indentify the inputs variables that are between brackets, and others if needed.
         - Identify its primary objective
         - Determine the target audience
         - Recognize key constraints or requirements
