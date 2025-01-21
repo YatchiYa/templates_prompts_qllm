@@ -1,0 +1,55 @@
+name: dez
+description: dzdze
+defaultProvider: openai
+organization_name: temp
+author_name: youcef
+visibility: Personal
+steps:
+  - name: GitHub Repository Fetcher
+    description: Télécharge et traite le contenu d'un référentiel GitHub
+    type: tool
+    tool: githubLoader
+    input:
+      repositoryUrl: '{{input}}'
+      authToken: '{{token}}'
+      exclude: '**/node_modules/**, **/dist/**, **/*.test.js, **/*.spec.ts, **/*.md'
+      include: '{{files_to_include}}'
+    input_description:
+      repositoryUrl: L'URL complète du référentiel GitHub à télécharger
+      authToken: Jeton d'accès personnel GitHub pour l'authentification
+      exclude: Modèle de fichiers à exclure du téléchargement
+      include: Modèle de fichiers à inclure spécifiquement dans le téléchargement
+    output: repo_content
+    output_description:
+      repo_content: >-
+        Collection du contenu téléchargé du référentiel, filtrée selon les
+        modèles d'inclusion/exclusion
+  - name: code review v0.1
+    description: code review.....
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/33c928bb-7283-4c61-bd23-edbe4c0bfe2f/47a346a7-1605-43b3-ac03-792505c7c779/code-review-v0.1.yaml
+    provider: aws-anthropic
+    input:
+      language: $repo_content
+    input_description: {}
+    output:
+      output_codes: output_codes
+    output_description: {}
+    promptContent: |-
+      as an expert in code analysis in lang {{language}}
+
+      analyze the following code,
+      {{code}}
+
+      and follow the following instructions : 
+       
+      - give me a full documentation for each function
+      - don't be lazy and give me full tests code for each function
+      - i need a full documented code
+
+      ### Always include the Output in Format in xml tags :
+
+      <output_codes>
+      [the differents tests codes]
+      </output_codes>
