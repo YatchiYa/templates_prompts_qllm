@@ -1,0 +1,55 @@
+name: simple workflow for code review
+description: rtfedzs
+defaultProvider: openai
+organization_name: temp
+author_name: youcef
+visibility: Personal
+steps:
+  - name: Documents Bulk Load / Retrieve [PATH]
+    description: >-
+      Télécharge plusieurs fichiers depuis l'espace documentaire personnel ou de
+      l'organisation
+    type: tool
+    tool: s3ToLocal
+    input:
+      bucket_name: quantalogic-bucket
+      keys: '{{load_files}}'
+      separator: ','
+    input_description:
+      bucket_name: Source de données à charger
+      keys: Liste des clés/chemins des fichiers à télécharger / utiliser.
+      separator: Délimiteur utilisé pour séparer plusieurs clés de fichiers
+    output: path_download
+    output_description:
+      path_download: >-
+        Collection de fichiers téléchargés depuis votre workspace, sauvegardés
+        localement Puis supprimés à la fin de l'execution du workflow
+  - name: code review v0.1
+    description: code review.....
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/33c928bb-7283-4c61-bd23-edbe4c0bfe2f/47a346a7-1605-43b3-ac03-792505c7c779/code-review-v0.1.yaml
+    provider: aws-anthropic
+    input:
+      language: $path_download
+    input_description: {}
+    output:
+      output_codes: output_codes
+    output_description: {}
+    promptContent: |-
+      as an expert in code analysis in lang {{language}}
+
+      analyze the following code,
+      {{code}}
+
+      and follow the following instructions : 
+       
+      - give me a full documentation for each function
+      - don't be lazy and give me full tests code for each function
+      - i need a full documented code
+
+      ### Always include the Output in Format in xml tags :
+
+      <output_codes>
+      [the differents tests codes]
+      </output_codes>
