@@ -1,0 +1,150 @@
+name: Prompt Proposal offer
+version: 1.0.0
+description: some desc
+author: youcefvvv
+content: >-
+  as an expert in crafting the best proposal offers in order to win the project 
+  requirements,
+
+    analyse the following inputs:
+
+    - Technical Specifications: 
+    {{context}}
+
+    - Project Analysis: 
+    {{analyse}}
+
+    Please generate a detailed and compelling technical proposal structured as
+    follows:
+
+    ## Executive Summary
+    - Company value proposition aligned with the client needs
+    - Key differentiators and competitive advantages
+    - High-level understanding of requirements and proposed approach
+    - Summary of expected benefits and outcomes
+
+    ## Understanding of Requirements
+    - Detailed analysis of Conseil d'État's current context
+    - Key challenges and pain points identified
+    - Strategic objectives and success factors
+    - Regulatory compliance understanding (RGS, RGAA, RGI)
+
+    ## Technical Solution
+
+    ### Development Approach
+    - Agile methodology implementation (Scrum/SAFe)
+    - Sprint organization and ceremonies
+    - Quality assurance processes
+    - DevOps practices and continuous integration/deployment
+
+    ### Technical Architecture
+    - Detailed solution architecture
+    - Technology stack and frameworks
+    - Security measures and compliance
+    - Integration approach with existing systems
+    - Performance optimization strategies
+
+    ### Innovation & AI Integration
+    - Proposed AI solutions and use cases
+    - Machine learning implementation approach
+    - Data processing and analysis methodology
+    - Integration with existing workflows
+
+    ## Project Organization
+
+    ### Team Structure
+    - Key roles and responsibilities
+    - Team composition and expertise levels
+    - Resource allocation and availability
+    - Backup and knowledge transfer strategy
+
+    ### Project Management
+    - Sprint planning and organization
+    - Risk management approach
+    - Communication plan
+    - Quality control procedures
+    - Documentation strategy
+
+    ## Implementation Plan
+
+    ### Phase 1: Project Initiation
+    - Team onboarding
+    - Environment setup
+    - Initial sprints planning
+
+    ### Phase 2: Development & Integration
+    - Sprint cycles
+    - Continuous integration setup
+    - Testing strategy
+    - Security implementation
+
+    ### Phase 3: Deployment & Support
+    - Release management
+    - Production deployment
+    - Knowledge transfer
+    - Support procedures
+
+    ## Quality Assurance
+    - Testing methodology
+    - Code review process
+    - Performance testing
+    - Security testing
+    - User acceptance testing
+
+    ## Innovation & Value Add
+    - Technological innovations
+    - Process improvements
+    - Additional services
+    - Knowledge sharing approach
+
+    ## Risk Management
+    - Risk identification
+    - Mitigation strategies
+    - Contingency plans
+    - Quality control measures
+
+    ## Appendices
+    - Team CVs and certifications
+    - Similar project references
+    - Technical environment details
+    - Methodology documentation
+    - Quality assurance procedures
+    - Security compliance documentation
+
+    Please format the output to include:
+
+    - Professional formatting with clear sections
+    - Tables for comparative data
+    - Diagrams for technical architecture
+    - Timeline visualizations
+    - Team organization charts
+    - Risk matrices
+
+    i need a full document well presented.
+
+
+  ### Always include the Output in Format in xml tags :
+
+
+  <proposal>
+
+  [the final proposal offer for the client]
+
+  </proposal>
+input_variables:
+  context:
+    type: string
+    description: ''
+  analyse:
+    type: string
+    description: ''
+output_variables:
+  proposal:
+    type: string
+    description: the final proposal offer for the client
+model: anthropic.claude-3-5-sonnet-20241022-v2:0
+provider: aws-anthropic
+parameters:
+  max_tokens: 80000
+  temperature: 0.5
+  top_p: 0.5
