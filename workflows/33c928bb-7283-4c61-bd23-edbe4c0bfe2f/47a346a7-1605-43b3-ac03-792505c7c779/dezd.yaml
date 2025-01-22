@@ -1,11 +1,11 @@
 name: dezd
-description: ezdezdez
+description: dezdez
 defaultProvider: openai
 organization_name: temp
 author_name: youcef
 visibility: Personal
 steps:
-  - name: Document Space Query
+  - name: Document Space Query [RAG]
     description: >-
       Outil avancé pour interroger et analyser des documents dans l'espace de
       travail
