@@ -1,0 +1,304 @@
+name: WF project analysis
+description: some desc
+defaultProvider: openai
+organization_name: youcefvvv's orga
+author_name: youcefvvv
+visibility: Public
+steps:
+  - name: Documents Bulk Load / Retrieve [PATH]
+    description: >-
+      Télécharge plusieurs fichiers depuis l'espace documentaire personnel ou de
+      l'organisation
+    type: tool
+    tool: s3ToLocal
+    input:
+      bucket_name: quantalogic-bucket
+      keys: '{{load_files}}'
+      separator: ','
+    input_description:
+      bucket_name: Source de données à charger
+      keys: Liste des clés/chemins des fichiers à télécharger / utiliser.
+      separator: Délimiteur utilisé pour séparer plusieurs clés de fichiers
+    output: path_download
+    output_description:
+      path_download: >-
+        Collection de fichiers téléchargés depuis votre workspace, sauvegardés
+        localement Puis supprimés à la fin de l'execution du workflow
+  - name: Code2Prompt, Document Space parser [CONTEXT]
+    description: >-
+      Outil Code2Prompt pour transformer le contenu d'un dossier en fichier
+      Markdown unique
+    type: tool
+    tool: ApiServiceCallC1
+    input:
+      method: POST
+      headers: '{"accept":"application/json", "Content-Type":"application/json"}'
+      url: http://localhost/api/raglite/parse_folder
+      token: '-'
+      data: $path_download
+    input_description:
+      url: URL complète pour analyser le dossier
+      method: Méthode HTTP pour exécuter la requête (par exemple, POST)
+      data: Chemin vers le dossier à analyser
+      headers: En-têtes personnalisés pour la requête
+      token: Jeton d'authentification si requis
+    output: upload_response
+    output_description:
+      upload_response: Fichier Markdown généré contenant tout le contenu du dossier analysé
+  - name: 'Project analysis '
+    description: some desc
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/36274a11-9acf-4952-a26a-ae7352b682dd/9e8a7beb-0f0f-4d51-9b57-5741a5eb7665/project-analysis-.yaml
+    provider: aws-anthropic
+    input:
+      context: $upload_response
+    input_description: {}
+    output:
+      analysis: analysis
+    output_description: {}
+    promptContent: >-
+      as an expert in context analysis, 
+
+
+      Given the following document context:
+
+      {{context}}
+
+
+      Please analyze and extract the following key elements:
+
+
+      1. Document Identification
+
+      - Document title and reference number
+
+      - Service/Department responsible
+
+      - Document purpose/scope
+
+
+      2. Project Structure
+
+      - Main lots/sections and their purposes
+
+      - Key deliverables for each section
+
+      - Duration and timing constraints
+
+
+      3. Technical Requirements
+
+      - Development environment specifications
+
+      - Tools and technologies required
+
+      - Security requirements and compliance standards
+
+
+      4. Project Methodology
+
+      - Development approach
+
+      - Quality assurance processes
+
+      - Testing requirements
+
+
+      5. Team Roles & Responsibilities
+
+      - Key stakeholders
+
+      - Team structure
+
+      - Specific role requirements
+
+
+      6. Specific Technical Details
+
+      - Programming languages and frameworks
+
+      - Infrastructure components
+
+      - Architecture specifications
+
+
+      7. Delivery Requirements
+
+      - Expected deliverables
+
+      - Documentation requirements
+
+      - Quality criteria
+
+
+      Please format the response as follows:
+
+      - Use headers (##) for main sections
+
+      - Use bullet points for listing items
+
+      - Bold (**) key terms and concepts
+
+      - Include relevant citations [X] for extracted information
+
+      - Present technical specifications in code blocks
+
+      - Use tables for comparing elements
+
+
+      improve your answers to have a fully article at least 6 pages, each
+      section is detailled and well presented,
+
+
+
+      ### Always include the Output in Format in xml tags :
+
+
+      <analysis>
+
+      [the full analyse of my project]
+
+      </analysis>
+  - name: Prompt Proposal offer
+    description: some desc
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/36274a11-9acf-4952-a26a-ae7352b682dd/9e8a7beb-0f0f-4d51-9b57-5741a5eb7665/prompt-proposal-offer.yaml
+    provider: aws-anthropic
+    input:
+      context: $upload_response
+      analyse: $analysis
+    input_description: {}
+    output:
+      proposal: proposal
+    output_description: {}
+    promptContent: >-
+      as an expert in crafting the best proposal offers in order to win the
+      project  requirements,
+
+        analyse the following inputs:
+
+        - Technical Specifications: 
+        {{context}}
+
+        - Project Analysis: 
+        {{analyse}}
+
+        Please generate a detailed and compelling technical proposal structured as
+        follows:
+
+        ## Executive Summary
+        - Company value proposition aligned with the client needs
+        - Key differentiators and competitive advantages
+        - High-level understanding of requirements and proposed approach
+        - Summary of expected benefits and outcomes
+
+        ## Understanding of Requirements
+        - Detailed analysis of Conseil d'État's current context
+        - Key challenges and pain points identified
+        - Strategic objectives and success factors
+        - Regulatory compliance understanding (RGS, RGAA, RGI)
+
+        ## Technical Solution
+
+        ### Development Approach
+        - Agile methodology implementation (Scrum/SAFe)
+        - Sprint organization and ceremonies
+        - Quality assurance processes
+        - DevOps practices and continuous integration/deployment
+
+        ### Technical Architecture
+        - Detailed solution architecture
+        - Technology stack and frameworks
+        - Security measures and compliance
+        - Integration approach with existing systems
+        - Performance optimization strategies
+
+        ### Innovation & AI Integration
+        - Proposed AI solutions and use cases
+        - Machine learning implementation approach
+        - Data processing and analysis methodology
+        - Integration with existing workflows
+
+        ## Project Organization
+
+        ### Team Structure
+        - Key roles and responsibilities
+        - Team composition and expertise levels
+        - Resource allocation and availability
+        - Backup and knowledge transfer strategy
+
+        ### Project Management
+        - Sprint planning and organization
+        - Risk management approach
+        - Communication plan
+        - Quality control procedures
+        - Documentation strategy
+
+        ## Implementation Plan
+
+        ### Phase 1: Project Initiation
+        - Team onboarding
+        - Environment setup
+        - Initial sprints planning
+
+        ### Phase 2: Development & Integration
+        - Sprint cycles
+        - Continuous integration setup
+        - Testing strategy
+        - Security implementation
+
+        ### Phase 3: Deployment & Support
+        - Release management
+        - Production deployment
+        - Knowledge transfer
+        - Support procedures
+
+        ## Quality Assurance
+        - Testing methodology
+        - Code review process
+        - Performance testing
+        - Security testing
+        - User acceptance testing
+
+        ## Innovation & Value Add
+        - Technological innovations
+        - Process improvements
+        - Additional services
+        - Knowledge sharing approach
+
+        ## Risk Management
+        - Risk identification
+        - Mitigation strategies
+        - Contingency plans
+        - Quality control measures
+
+        ## Appendices
+        - Team CVs and certifications
+        - Similar project references
+        - Technical environment details
+        - Methodology documentation
+        - Quality assurance procedures
+        - Security compliance documentation
+
+        Please format the output to include:
+
+        - Professional formatting with clear sections
+        - Tables for comparative data
+        - Diagrams for technical architecture
+        - Timeline visualizations
+        - Team organization charts
+        - Risk matrices
+
+        i need a full document well presented.
+
+
+      ### Always include the Output in Format in xml tags :
+
+
+      <proposal>
+
+      [the final proposal offer for the client]
+
+      </proposal>
