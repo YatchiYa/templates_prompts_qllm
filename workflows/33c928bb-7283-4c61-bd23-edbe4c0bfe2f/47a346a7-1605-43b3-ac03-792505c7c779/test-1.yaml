@@ -1,0 +1,85 @@
+name: test 1
+description: ghbfvds
+defaultProvider: openai
+organization_name: temp
+author_name: youcef
+visibility: Personal
+steps:
+  - name: Document Load  / Retrieve [CONTEXT]
+    description: >-
+      Charger ou Récupère Un fichier spécifique depuis le stockage de votre
+      workspace
+    type: tool
+    tool: s3
+    input:
+      operation: load
+      key: '{{load_key}}'
+      bucket_name: quantalogic-bucket
+    input_description:
+      operation: Type d'opération à effectuer (load)
+      bucket_name: Nom du bucket à accéder
+      key: Clé/chemin spécifique du fichier à charger
+    output: template_content
+    output_description:
+      template_content: Contenu du fichier récupéré depuis le workspace
+  - name: code review v1
+    description: test
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/33c928bb-7283-4c61-bd23-edbe4c0bfe2f/47a346a7-1605-43b3-ac03-792505c7c779/code-review-v1.yaml
+    provider: aws-anthropic
+    input:
+      code: $template_content
+    input_description: {}
+    output:
+      result: result
+    output_description: {}
+    promptContent: >-
+      As an expert code analysis consultant, I need you to provide a
+      comprehensive report on the following code:
+
+
+      ```
+
+      {{code}}
+
+      ```
+
+
+      Your report should address the following key aspects:
+
+
+      1. Code Structure and Organization:
+         - Identify the high-level components, modules, or logical units within the code.
+         - Describe how the code is organized and structured, highlighting any patterns or conventions used.
+         - Assess the overall readability and maintainability of the code structure.
+
+      2. Functionality and Algorithms:
+         - Explain the main functionality and purpose of the code.
+         - Identify and describe the key algorithms or computational logic used.
+         - Evaluate the efficiency and performance characteristics of the algorithms.
+
+      3. Code Quality and Best Practices:
+         - Assess the code's adherence to industry best practices and coding standards.
+         - Identify potential areas for improvement, such as code optimization, error handling, or documentation.
+         - Provide recommendations for enhancing the code's overall quality and robustness.
+
+      4. Future Considerations:
+         - Discuss any potential scalability, extensibility, or adaptability issues with the current implementation.
+         - Suggest ideas or approaches for future enhancements or refactoring of the code.
+         - Highlight any known limitations or constraints that should be addressed.
+
+      Please provide your detailed analysis in a clear and structured format,
+      addressing each of the key aspects mentioned above. Your report should be
+      tailored to the needs and expertise of the target audience: experts in
+      code analysis.
+
+
+      ### Always include the Output in Format in xml tags :
+
+
+      <result>
+
+      [the final result ]
+
+      </result>
