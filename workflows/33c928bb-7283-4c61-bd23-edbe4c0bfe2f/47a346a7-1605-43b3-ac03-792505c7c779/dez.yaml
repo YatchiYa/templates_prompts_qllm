@@ -1,0 +1,48 @@
+name: dez
+description: dez
+defaultProvider: openai
+organization_name: temp
+author_name: youcef
+visibility: Personal
+steps:
+  - name: Documents Bulk Load / Retrieve [PATH]
+    description: >-
+      Télécharge plusieurs fichiers depuis l'espace documentaire personnel ou de
+      l'organisation
+    type: tool
+    tool: s3ToLocal
+    input:
+      bucket_name: quantalogic-bucket
+      keys: '{{load_files}}'
+      separator: ','
+    input_description:
+      bucket_name: Source de données à charger
+      keys: Liste des clés/chemins des fichiers à télécharger / utiliser.
+      separator: Délimiteur utilisé pour séparer plusieurs clés de fichiers
+    output: path_download
+    output_description:
+      path_download: >-
+        Collection de fichiers téléchargés depuis votre workspace, sauvegardés
+        localement Puis supprimés à la fin de l'execution du workflow
+  - name: Search & Analyze Documents with LlamaIndex [RAG]
+    description: >-
+      Système avancé de RAG (Retrieval-Augmented Generation) pour le traitement
+      et la recherche de documents
+    type: tool
+    tool: LlamaIndexRAGV1
+    input:
+      embedModel: openai
+      topK: '5'
+      directory: $path_download
+      query: '{{query}}'
+    input_description:
+      directory: Chemin vers le répertoire contenant les documents à analyser
+      query: La requête de recherche ou la question à traiter sur les documents
+      embedModel: >-
+        Nom/type de modèle d'embedding à utiliser pour le traitement des
+        documents
+      topK: Nombre de résultats les plus pertinents à retourner
+    output: response
+    output_description:
+      response: Réponse générée basée sur l'analyse des documents
+      sources: Documents de référence utilisés pour générer la réponse
