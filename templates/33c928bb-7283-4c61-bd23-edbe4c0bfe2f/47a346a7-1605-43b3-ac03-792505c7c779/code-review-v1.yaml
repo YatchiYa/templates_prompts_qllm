@@ -1,0 +1,66 @@
+name: code review v1
+version: 1.0.0
+description: test
+author: youcef
+content: >-
+  As an expert code analysis consultant, I need you to provide a comprehensive
+  report on the following code:
+
+
+  ```
+
+  {{code}}
+
+  ```
+
+
+  Your report should address the following key aspects:
+
+
+  1. Code Structure and Organization:
+     - Identify the high-level components, modules, or logical units within the code.
+     - Describe how the code is organized and structured, highlighting any patterns or conventions used.
+     - Assess the overall readability and maintainability of the code structure.
+
+  2. Functionality and Algorithms:
+     - Explain the main functionality and purpose of the code.
+     - Identify and describe the key algorithms or computational logic used.
+     - Evaluate the efficiency and performance characteristics of the algorithms.
+
+  3. Code Quality and Best Practices:
+     - Assess the code's adherence to industry best practices and coding standards.
+     - Identify potential areas for improvement, such as code optimization, error handling, or documentation.
+     - Provide recommendations for enhancing the code's overall quality and robustness.
+
+  4. Future Considerations:
+     - Discuss any potential scalability, extensibility, or adaptability issues with the current implementation.
+     - Suggest ideas or approaches for future enhancements or refactoring of the code.
+     - Highlight any known limitations or constraints that should be addressed.
+
+  Please provide your detailed analysis in a clear and structured format,
+  addressing each of the key aspects mentioned above. Your report should be
+  tailored to the needs and expertise of the target audience: experts in code
+  analysis.
+
+
+  ### Always include the Output in Format in xml tags :
+
+
+  <result>
+
+  [the final result ]
+
+  </result>
+input_variables:
+  code:
+    type: string
+    description: ''
+output_variables:
+  result:
+    type: string
+    description: 'the final result '
+model: anthropic.claude-3-5-sonnet-20241022-v2:0
+provider: aws-anthropic
+parameters:
+  max_tokens: 5000
+  temperature: 0.5
