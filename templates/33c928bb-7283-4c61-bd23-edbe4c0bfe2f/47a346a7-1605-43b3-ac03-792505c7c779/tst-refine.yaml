@@ -1,0 +1,82 @@
+name: tst refine
+version: 1.0.0
+description: htgfvdc
+author: youcef
+content: >-
+  Analyze the given context:
+
+  {{context}}
+
+
+  Improve the prompt to generate a better article like argvix, including an HTML
+  section.
+
+
+  Target Audience: Experts
+
+
+  1. Original Prompt Analysis:
+     - Input variables: {{context}}
+     - Primary objective: Analyze the given context and refine the answer into a better representation for an article like argvix, including an HTML section.
+     - Target audience: Experts
+     - Key constraints/requirements: The prompt must be clear, specific, and designed to elicit high-quality, relevant responses.
+
+  2. First Improved Prompt Version:
+     Analyze the provided context {{context}} and generate a comprehensive article that improves upon the original representation. The article should be well-structured and include the following sections:
+
+     - Introduction: Provide an overview of the topic and the key points to be addressed.
+     - Analysis of the Context: Delve deeper into the given context, highlighting the important aspects and their implications.
+     - Improved Representation: Refine the answer into a more robust and informative representation, ensuring it is accurate, coherent, and engaging.
+     - HTML Section: Include a section formatted in HTML that showcases the key information in a visually appealing and easy-to-digest format.
+     - Conclusion: Summarize the main takeaways and provide any necessary recommendations or insights.
+
+  3. Explanation of Applied Techniques:
+     - Chain of Thought (CoT): The prompt breaks down the task into clear steps, guiding the response to follow a logical progression from analyzing the context to generating a comprehensive article.
+     - Few-Shot Learning: By specifying the target audience as "Experts," the prompt encourages the AI to provide a more detailed and specialized response that caters to the needs of this audience.
+     - Metacognitive Prompting: The prompt includes various quality metrics for the AI to evaluate the improved prompt, fostering self-reflection and iterative refinement.
+
+  4. Quality Metric Evaluation:
+     - Clarity: The prompt is clear and unambiguous, providing a structured outline for the desired response.
+     - Specificity: The prompt gives detailed instructions on the required sections and the level of depth expected in the article.
+     - Engagement: The prompt encourages the AI to produce a well-researched and informative article that is likely to engage the target audience of experts.
+     - Versatility: The prompt is flexible enough to accommodate various scenarios within the given context, allowing for a comprehensive and adaptable response.
+     - Depth: The prompt prompts the AI to delve into the analysis of the context and provide a robust, nuanced representation of the topic.
+
+  5. Iterative Refinement Process:
+     - The initial improved prompt addresses the key elements required, including the analysis of the context, the improved representation, and the HTML section.
+     - To further enhance the prompt, the AI could consider incorporating additional advanced techniques, such as Tree of Thought (ToT), to explore multiple reasoning paths and provide a more comprehensive analysis.
+     - Additionally, the AI could refine the prompt to emphasize the importance of incorporating relevant examples or case studies to support the improved representation, further strengthening the overall quality of the article.
+
+  6. Final Thoughts on Improvement:
+     The improved prompt successfully addresses the original requirements, providing a structured and detailed framework for generating a high-quality article tailored to the target audience of experts. By leveraging advanced prompting techniques, such as CoT, Few-Shot Learning, and Metacognitive Prompting, the prompt encourages the AI to produce a comprehensive, engaging, and informative response that aligns with the specified quality metrics.
+
+  ### Always include the Output in Format in xml tags :
+
+
+  <article_generated>
+
+  [article]
+
+  </article_generated>
+
+
+  <html_artice_code>
+
+  [the html code]
+
+  </html_artice_code>
+input_variables:
+  context:
+    type: string
+    description: ''
+output_variables:
+  article_generated:
+    type: string
+    description: article
+  html_artice_code:
+    type: string
+    description: the html code
+model: anthropic.claude-3-5-sonnet-20241022-v2:0
+provider: aws-anthropic
+parameters:
+  max_tokens: 4999
