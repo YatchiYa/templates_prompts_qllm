@@ -1,0 +1,19 @@
+name: dezdez
+description: dez
+defaultProvider: openai
+organization_name: youcefvvv's orga
+author_name: youcefvvv
+visibility: Personal
+steps:
+  - name: fer
+    description: frefre
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/36274a11-9acf-4952-a26a-ae7352b682dd/9e8a7beb-0f0f-4d51-9b57-5741a5eb7665/fer.yaml
+    provider: openai
+    input:
+      title: '{{title}}'
+    input_description: {}
+    output: {}
+    output_description: {}
+    promptContent: tell me a story about {{title}}
