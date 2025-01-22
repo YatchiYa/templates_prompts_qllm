@@ -1,0 +1,43 @@
+name: dezdez
+version: 1.0.0
+description: dezdez
+author: youcefvvv
+content: >-
+  Craft a detailed, multi-paragraph story about the topic of "{{title}}". Draw
+  upon your expertise and knowledge to create a narrative that is:
+
+
+  - Engaging and captivating, with a clear plot and well-developed characters
+
+  - Grounded in realistic details and plausible scenarios relevant to the topic
+
+  - Thoughtful and insightful, exploring the complexities and nuances of the
+  subject matter
+
+  - Written in a polished, professional style suitable for an expert audience
+
+
+  Your story should be approximately 500-800 words in length and demonstrate
+  your mastery of storytelling techniques. Feel free to incorporate research,
+  personal experiences, or imaginative elements as appropriate to the topic and
+  your expertise.
+
+
+  ### Always include the Output in Format in xml tags :
+
+
+  <story>
+
+  [fres]
+
+  </story>
+input_variables:
+  title:
+    type: string
+    description: ''
+output_variables:
+  story:
+    type: string
+    description: fres
+model: gpt-4o-mini
+provider: openai
