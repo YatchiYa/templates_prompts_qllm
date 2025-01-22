@@ -1,0 +1,26 @@
+name: dez
+description: dez
+defaultProvider: openai
+organization_name: youcefvvv's orga
+author_name: youcefvvv
+visibility: Personal
+steps:
+  - name: GitHub Repository Fetcher [REPO TO CONTEXT]
+    description: Télécharge et traite le contenu d'un référentiel GitHub
+    type: tool
+    tool: githubLoader
+    input:
+      repositoryUrl: '{{input}}'
+      authToken: '{{token}}'
+      exclude: '{{exclude}}'
+      include: '{{files_to_include}}'
+    input_description:
+      repositoryUrl: L'URL complète du référentiel GitHub à télécharger
+      authToken: Jeton d'accès personnel GitHub pour l'authentification
+      exclude: Modèle de fichiers à exclure du téléchargement
+      include: Modèle de fichiers à inclure spécifiquement dans le téléchargement
+    output: repo_content
+    output_description:
+      repo_content: >-
+        Collection du contenu téléchargé du référentiel, filtrée selon les
+        modèles d'inclusion/exclusion
