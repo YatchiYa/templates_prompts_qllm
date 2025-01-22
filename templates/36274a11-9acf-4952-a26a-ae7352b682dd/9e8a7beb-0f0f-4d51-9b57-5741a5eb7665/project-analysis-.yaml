@@ -1,0 +1,121 @@
+name: 'Project analysis '
+version: 1.0.0
+description: some desc
+author: youcefvvv
+content: >-
+  as an expert in context analysis, 
+
+
+  Given the following document context:
+
+  {{context}}
+
+
+  Please analyze and extract the following key elements:
+
+
+  1. Document Identification
+
+  - Document title and reference number
+
+  - Service/Department responsible
+
+  - Document purpose/scope
+
+
+  2. Project Structure
+
+  - Main lots/sections and their purposes
+
+  - Key deliverables for each section
+
+  - Duration and timing constraints
+
+
+  3. Technical Requirements
+
+  - Development environment specifications
+
+  - Tools and technologies required
+
+  - Security requirements and compliance standards
+
+
+  4. Project Methodology
+
+  - Development approach
+
+  - Quality assurance processes
+
+  - Testing requirements
+
+
+  5. Team Roles & Responsibilities
+
+  - Key stakeholders
+
+  - Team structure
+
+  - Specific role requirements
+
+
+  6. Specific Technical Details
+
+  - Programming languages and frameworks
+
+  - Infrastructure components
+
+  - Architecture specifications
+
+
+  7. Delivery Requirements
+
+  - Expected deliverables
+
+  - Documentation requirements
+
+  - Quality criteria
+
+
+  Please format the response as follows:
+
+  - Use headers (##) for main sections
+
+  - Use bullet points for listing items
+
+  - Bold (**) key terms and concepts
+
+  - Include relevant citations [X] for extracted information
+
+  - Present technical specifications in code blocks
+
+  - Use tables for comparing elements
+
+
+  improve your answers to have a fully article at least 6 pages, each section is
+  detailled and well presented,
+
+
+
+  ### Always include the Output in Format in xml tags :
+
+
+  <analysis>
+
+  [the full analyse of my project]
+
+  </analysis>
+input_variables:
+  context:
+    type: string
+    description: ''
+output_variables:
+  analysis:
+    type: string
+    description: the full analyse of my project
+model: anthropic.claude-3-5-sonnet-20241022-v2:0
+provider: aws-anthropic
+parameters:
+  max_tokens: 80000
+  temperature: 0.5
+  top_p: 0.5
