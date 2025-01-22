@@ -1,0 +1,87 @@
+name: test 4
+description: ghfds
+defaultProvider: openai
+organization_name: temp
+author_name: youcef
+visibility: Personal
+steps:
+  - name: GitHub Repository Fetcher [REPO TO CONTEXT]
+    description: Télécharge et traite le contenu d'un référentiel GitHub
+    type: tool
+    tool: githubLoader
+    input:
+      repositoryUrl: '{{input}}'
+      authToken: '{{token}}'
+      exclude: '{{exclude}}'
+      include: '{{files_to_include}}'
+    input_description:
+      repositoryUrl: L'URL complète du référentiel GitHub à télécharger
+      authToken: Jeton d'accès personnel GitHub pour l'authentification
+      exclude: Modèle de fichiers à exclure du téléchargement
+      include: Modèle de fichiers à inclure spécifiquement dans le téléchargement
+    output: repo_content
+    output_description:
+      repo_content: >-
+        Collection du contenu téléchargé du référentiel, filtrée selon les
+        modèles d'inclusion/exclusion
+  - name: code review v1
+    description: test
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/33c928bb-7283-4c61-bd23-edbe4c0bfe2f/47a346a7-1605-43b3-ac03-792505c7c779/code-review-v1.yaml
+    provider: aws-anthropic
+    input:
+      code: $repo_content
+    input_description: {}
+    output:
+      result: result
+    output_description: {}
+    promptContent: >-
+      As an expert code analysis consultant, I need you to provide a
+      comprehensive report on the following code:
+
+
+      ```
+
+      {{code}}
+
+      ```
+
+
+      Your report should address the following key aspects:
+
+
+      1. Code Structure and Organization:
+         - Identify the high-level components, modules, or logical units within the code.
+         - Describe how the code is organized and structured, highlighting any patterns or conventions used.
+         - Assess the overall readability and maintainability of the code structure.
+
+      2. Functionality and Algorithms:
+         - Explain the main functionality and purpose of the code.
+         - Identify and describe the key algorithms or computational logic used.
+         - Evaluate the efficiency and performance characteristics of the algorithms.
+
+      3. Code Quality and Best Practices:
+         - Assess the code's adherence to industry best practices and coding standards.
+         - Identify potential areas for improvement, such as code optimization, error handling, or documentation.
+         - Provide recommendations for enhancing the code's overall quality and robustness.
+
+      4. Future Considerations:
+         - Discuss any potential scalability, extensibility, or adaptability issues with the current implementation.
+         - Suggest ideas or approaches for future enhancements or refactoring of the code.
+         - Highlight any known limitations or constraints that should be addressed.
+
+      Please provide your detailed analysis in a clear and structured format,
+      addressing each of the key aspects mentioned above. Your report should be
+      tailored to the needs and expertise of the target audience: experts in
+      code analysis.
+
+
+      ### Always include the Output in Format in xml tags :
+
+
+      <result>
+
+      [the final result ]
+
+      </result>
