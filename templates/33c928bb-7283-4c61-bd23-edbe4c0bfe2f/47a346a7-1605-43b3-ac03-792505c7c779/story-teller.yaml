@@ -1,0 +1,24 @@
+name: story teller
+version: 1.0.0
+description: a simple tool for story teller
+author: youcef
+content: |-
+  tell me a story about {{title}}
+
+  ### Always include the Output in Format in xml tags :
+
+  <story_generated>
+  [the story generated after being refined]
+  </story_generated>
+input_variables:
+  title:
+    type: string
+    description: ''
+output_variables:
+  story_generated:
+    type: string
+    description: the story generated after being refined
+model: anthropic.claude-3-5-sonnet-20241022-v2:0
+provider: aws-anthropic
+parameters:
+  max_tokens: 5000
