@@ -1,0 +1,67 @@
+name: test
+version: 1.0.0
+description: test
+author: youcef
+content: >-
+  Generate JUnit test cases for the following Java class and method. Include
+  tests for valid input, invalid input, and edge cases. Use Mockito for any
+  dependencies. Ensure the tests follow the Arrange-Act-Assert pattern and use
+  descriptive names.
+
+
+  {{code_to_test}}
+
+
+  Insights from Existing Codebase:
+
+
+  {{code_samples}}
+
+
+  Prompt Objective:
+
+
+  The primary objective of this prompt is to create a set of robust unit tests
+  for the provided code. The target audience is experts in software testing and
+  development.
+
+
+  Notes for Effective Prompting
+
+  Be Specific : Outline exactly what aspects of the code you want to be tested
+  (valid inputs, edge cases, exception handling).
+
+
+  Specify Environment : Mention any libraries or frameworks to be used (like
+  JUnit for testing and Mockito for mocking).
+
+
+  Encourage Best Practices : Indicate a preference for testing patterns (like
+  Arrange-Act-Assert) and clear naming conventions.
+
+
+  Include Context : If there are additional details about the functionality or
+  dependencies that are relevant, add that context.
+
+
+  ### Always include the Output in Format in xml tags :
+
+
+  <test_code>
+
+  [test code generated]
+
+  </test_code>
+input_variables:
+  code_to_test:
+    type: string
+    description: ''
+  code_samples:
+    type: string
+    description: ''
+output_variables:
+  test_code:
+    type: string
+    description: test code generated
+model: gpt-4o-mini
+provider: openai
