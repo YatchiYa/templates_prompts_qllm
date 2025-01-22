@@ -1,0 +1,47 @@
+name: c x
+description: xs
+defaultProvider: openai
+organization_name: youcefvvv's orga
+author_name: youcefvvv
+visibility: Personal
+steps:
+  - name: Documents Bulk Load / Retrieve [PATH]
+    description: >-
+      Télécharge plusieurs fichiers depuis l'espace documentaire personnel ou de
+      l'organisation
+    type: tool
+    tool: s3ToLocal
+    input:
+      bucket_name: quantalogic-bucket
+      keys: '{{load_files}}'
+      separator: ','
+    input_description:
+      bucket_name: Source de données à charger
+      keys: Liste des clés/chemins des fichiers à télécharger / utiliser.
+      separator: Délimiteur utilisé pour séparer plusieurs clés de fichiers
+    output: path_download
+    output_description:
+      path_download: >-
+        Collection de fichiers téléchargés depuis votre workspace, sauvegardés
+        localement Puis supprimés à la fin de l'execution du workflow
+  - name: Code2Prompt, Document Space parser [CONTEXT]
+    description: >-
+      Outil Code2Prompt pour transformer le contenu d'un dossier en fichier
+      Markdown unique
+    type: tool
+    tool: ApiServiceCallC1
+    input:
+      method: POST
+      headers: '{"accept":"application/json", "Content-Type":"application/json"}'
+      url: http://localhost:8001/api/raglite/parse_folder
+      token: '-'
+      data: $path_download
+    input_description:
+      url: URL complète pour analyser le dossier
+      method: Méthode HTTP pour exécuter la requête (par exemple, POST)
+      data: Chemin vers le dossier à analyser
+      headers: En-têtes personnalisés pour la requête
+      token: Jeton d'authentification si requis
+    output: upload_response
+    output_description:
+      upload_response: Fichier Markdown généré contenant tout le contenu du dossier analysé
