@@ -1,0 +1,223 @@
+name: frfrf
+version: 1.0.0
+description: fr
+author: youcefvvv
+content: |2-
+   /************************************************
+          📚 Advanced Code Documentation Generator 1.0
+          🔧 Language: {{programming_language}} 
+         ************************************************/
+
+        As a 𝗦𝗲𝗻𝗶𝗼𝗿 𝗧𝗲𝗰𝗵𝗻𝗶𝗰𝗮𝗹 𝗗𝗼𝗰𝘂𝗺𝗲𝗻𝘁𝗮𝘁𝗶𝗼𝗻
+        𝗘𝗻𝗴𝗶𝗻𝗲𝗲𝗿, craft a full article of a comprehensive, detailled
+        documentation for my snipet code :
+
+
+        📋 INPUT PARAMETERS
+
+        ------------------
+
+        💻 Code Snippet: {{code}}
+
+        🔧 Language: {{programming_language}}
+
+        📚 Documentation Style: {{style}} // e.g., JSDoc, PyDoc, XML Doc
+
+
+
+        <documentations> 
+
+
+        🎨 DOCUMENTATION STRUCTURE
+
+        -------------------------  
+
+              📌 Function/Class Name 
+               ================================
+            
+               📝 Description
+               -------------
+              Detailed explanation of the function's purpose and functionality.
+               Include business context and use cases.
+              
+              🔧 Technical Specifications
+              -------------------------
+              @version     {{version}}
+              @author      {{author}}
+              @since       {{date}}
+              
+              📥 Parameters
+              ------------
+              @param  {type} name - Description
+              └─ Validation rules
+              └─ Expected format
+              └─ Default values
+              
+              📤 Returns
+              ----------
+              @return {type} Description
+              └─ Possible values
+              └─ Format specifications
+              
+              🔄 Dependencies
+              --------------
+              @requires module/library
+              @see relatedFunction()
+              
+              ⚠️ Exceptions
+              ------------
+              @throws {ErrorType} Description of error scenarios
+              └─ Trigger conditions
+              └─ Error handling
+              
+              📋 Example Usage
+              ---------------
+              ```
+              // Code example showing typical usage
+              // Include multiple scenarios
+              ```
+              
+              💡 Notes
+              --------
+              - Implementation details
+              - Performance considerations
+              - Security implications
+              - Best practices
+              
+              🔒 Security
+              ----------
+              - Access control
+              - Data validation
+              - Security considerations
+              
+              ⚙️ Configuration
+              ---------------
+              - Environment requirements
+              - Configuration options
+              - Setup instructions
+              
+              📊 Performance
+              -------------
+              - Time complexity: O(n)
+              - Space complexity: O(n)
+              - Performance tips
+              
+              🔄 Changelog
+              -----------
+              - Version history
+              - Major changes
+              - Migration notes
+          
+
+        </documentations>
+
+
+
+        🎯 DOCUMENTATION REQUIREMENTS
+
+        ---------------------------
+
+        1. 📝 Content Quality
+           └─ Clear and concise
+           └─ Technical accuracy
+           └─ Complete coverage
+           └─ Consistent terminology
+
+        2. 🎨 Formatting
+           └─ Language-specific conventions
+           └─ Proper indentation
+           └─ Visual separation
+           └─ Consistent style
+
+        3. 📚 Documentation Scope
+           └─ Public interfaces
+           └─ Private methods
+           └─ Constants/Enums
+           └─ Types/Interfaces
+
+        4. 🔍 Code Examples
+           └─ Real-world scenarios
+           └─ Edge cases
+           └─ Best practices
+           └─ Error handling
+
+        🔄 VALIDATION CHECKLIST
+
+        ----------------------
+
+        ✓ All parameters documented
+
+        ✓ Return values specified
+
+        ✓ Exceptions documented
+
+        ✓ Examples provided
+
+        ✓ Security notes included
+
+        ✓ Performance documented
+
+        ✓ Dependencies listed
+
+        ✓ Version history updated
+
+
+        📌 STYLE GUIDELINES
+
+        ------------------
+
+        1. Naming Conventions
+           └─ Clear function names
+           └─ Descriptive parameters
+           └─ Consistent casing
+
+        2. Comment Structure
+           └─ Block comments
+           └─ Inline explanations
+           └─ TODO markers
+
+        3. Code Examples
+           └─ Runnable snippets
+           └─ Clear outputs
+           └─ Error scenarios
+
+        4. Special Notations
+           └─ Deprecation notices
+           └─ Version compatibility
+           └─ Breaking changes
+
+        5. make sure to structure well and return a full article well designed to
+        present to my client.
+
+
+
+        ### Always include the Output in Format in xml tags :
+
+  <krodolez>
+  [dzevgrzb,;:]
+  </krodolez>
+input_variables:
+  programming_language:
+    type: string
+    description: ''
+  code:
+    type: string
+    description: ''
+  style:
+    type: string
+    description: ''
+  version:
+    type: string
+    description: ''
+  author:
+    type: string
+    description: ''
+  date:
+    type: string
+    description: ''
+output_variables:
+  krodolez:
+    type: string
+    description: 'dzevgrzb,;:'
+model: gpt-4o-mini
+provider: openai
