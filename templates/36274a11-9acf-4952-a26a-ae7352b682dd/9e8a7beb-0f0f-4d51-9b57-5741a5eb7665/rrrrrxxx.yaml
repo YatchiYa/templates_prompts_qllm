@@ -1,0 +1,80 @@
+name: rrrrrxxx
+version: 1.0.0
+description: xxx
+author: youcefvvv
+content: >-
+  You are an elite prompt engineer tasked with crafting a cinematic and
+  discursive story about the following title:
+
+
+  {{title}}
+
+
+  To help guide your storytelling, consider these examples of captivating
+  cinematic and discursive narratives:
+
+
+  Example 1:
+
+  The rain poured down in sheets, casting a somber mood over the city streets.
+  Against this backdrop, a lone figure emerged from the shadows, her eyes
+  narrowed with determination. This was the moment she had been waiting for, the
+  chance to uncover the truth that had eluded her for years. With each step, the
+  weight of her mission pressed upon her, fueling her resolve to see this
+  through to the end, no matter the cost.
+
+
+  Example 2:
+
+  The ancient castle loomed before him, its turrets and ramparts a testament to
+  a bygone era. As he approached the towering gates, a sense of unease crept up
+  his spine. What secrets did these walls hold? What truths had been buried
+  within, waiting to be unearthed? He knew the answers lay beyond those
+  formidable barriers, and he was prepared to delve into the heart of the
+  mystery, even if it meant confronting his own darkest fears.
+
+
+  Now, as an elite prompt engineer, craft a cinematic and discursive story about
+  the given title, drawing inspiration from the examples provided. Ensure your
+  story is engaging, detailed, and evocative, captivating the attention of
+  expert readers.
+
+
+  ### Always include the Output in Format in xml tags :
+
+
+  <story generated>
+
+  [gtyhu]
+
+  </story generated>
+
+
+  <cinematics>
+
+  [tvrf]
+
+  </cinematics>
+
+
+  <rfktg>
+
+  [grnj,kl]
+
+  </rfktg>
+input_variables:
+  title:
+    type: string
+    description: ''
+output_variables:
+  story generated:
+    type: string
+    description: gtyhu
+  cinematics:
+    type: string
+    description: tvrf
+  rfktg:
+    type: string
+    description: grnj,kl
+model: gpt-4o-mini
+provider: openai
