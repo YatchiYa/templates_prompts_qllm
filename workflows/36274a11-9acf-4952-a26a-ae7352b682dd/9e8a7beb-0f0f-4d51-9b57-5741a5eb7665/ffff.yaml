@@ -1,0 +1,333 @@
+name: ffff
+description: ffff
+defaultProvider: openai
+organization_name: youcefvvv's orga
+author_name: youcefvvv
+visibility: Personal
+steps:
+  - name: frfrf
+    description: fr
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/36274a11-9acf-4952-a26a-ae7352b682dd/9e8a7beb-0f0f-4d51-9b57-5741a5eb7665/frfrf.yaml
+    provider: openai
+    input:
+      programming_language: '{{programming_language}}'
+      code: '{{code}}'
+      style: '{{style}}'
+      version: '{{version}}'
+      author: '{{author}}'
+      date: '{{date}}'
+    input_description: {}
+    output:
+      krodolez: krodolez
+    output_description: {}
+    promptContent: |2-
+       /************************************************
+              📚 Advanced Code Documentation Generator 1.0
+              🔧 Language: {{programming_language}} 
+             ************************************************/
+
+            As a 𝗦𝗲𝗻𝗶𝗼𝗿 𝗧𝗲𝗰𝗵𝗻𝗶𝗰𝗮𝗹 𝗗𝗼𝗰𝘂𝗺𝗲𝗻𝘁𝗮𝘁𝗶𝗼𝗻
+            𝗘𝗻𝗴𝗶𝗻𝗲𝗲𝗿, craft a full article of a comprehensive, detailled
+            documentation for my snipet code :
+
+
+            📋 INPUT PARAMETERS
+
+            ------------------
+
+            💻 Code Snippet: {{code}}
+
+            🔧 Language: {{programming_language}}
+
+            📚 Documentation Style: {{style}} // e.g., JSDoc, PyDoc, XML Doc
+
+
+
+            <documentations> 
+
+
+            🎨 DOCUMENTATION STRUCTURE
+
+            -------------------------  
+
+                  📌 Function/Class Name 
+                   ================================
+                
+                   📝 Description
+                   -------------
+                  Detailed explanation of the function's purpose and functionality.
+                   Include business context and use cases.
+                  
+                  🔧 Technical Specifications
+                  -------------------------
+                  @version     {{version}}
+                  @author      {{author}}
+                  @since       {{date}}
+                  
+                  📥 Parameters
+                  ------------
+                  @param  {type} name - Description
+                  └─ Validation rules
+                  └─ Expected format
+                  └─ Default values
+                  
+                  📤 Returns
+                  ----------
+                  @return {type} Description
+                  └─ Possible values
+                  └─ Format specifications
+                  
+                  🔄 Dependencies
+                  --------------
+                  @requires module/library
+                  @see relatedFunction()
+                  
+                  ⚠️ Exceptions
+                  ------------
+                  @throws {ErrorType} Description of error scenarios
+                  └─ Trigger conditions
+                  └─ Error handling
+                  
+                  📋 Example Usage
+                  ---------------
+                  ```
+                  // Code example showing typical usage
+                  // Include multiple scenarios
+                  ```
+                  
+                  💡 Notes
+                  --------
+                  - Implementation details
+                  - Performance considerations
+                  - Security implications
+                  - Best practices
+                  
+                  🔒 Security
+                  ----------
+                  - Access control
+                  - Data validation
+                  - Security considerations
+                  
+                  ⚙️ Configuration
+                  ---------------
+                  - Environment requirements
+                  - Configuration options
+                  - Setup instructions
+                  
+                  📊 Performance
+                  -------------
+                  - Time complexity: O(n)
+                  - Space complexity: O(n)
+                  - Performance tips
+                  
+                  🔄 Changelog
+                  -----------
+                  - Version history
+                  - Major changes
+                  - Migration notes
+              
+
+            </documentations>
+
+
+
+            🎯 DOCUMENTATION REQUIREMENTS
+
+            ---------------------------
+
+            1. 📝 Content Quality
+               └─ Clear and concise
+               └─ Technical accuracy
+               └─ Complete coverage
+               └─ Consistent terminology
+
+            2. 🎨 Formatting
+               └─ Language-specific conventions
+               └─ Proper indentation
+               └─ Visual separation
+               └─ Consistent style
+
+            3. 📚 Documentation Scope
+               └─ Public interfaces
+               └─ Private methods
+               └─ Constants/Enums
+               └─ Types/Interfaces
+
+            4. 🔍 Code Examples
+               └─ Real-world scenarios
+               └─ Edge cases
+               └─ Best practices
+               └─ Error handling
+
+            🔄 VALIDATION CHECKLIST
+
+            ----------------------
+
+            ✓ All parameters documented
+
+            ✓ Return values specified
+
+            ✓ Exceptions documented
+
+            ✓ Examples provided
+
+            ✓ Security notes included
+
+            ✓ Performance documented
+
+            ✓ Dependencies listed
+
+            ✓ Version history updated
+
+
+            📌 STYLE GUIDELINES
+
+            ------------------
+
+            1. Naming Conventions
+               └─ Clear function names
+               └─ Descriptive parameters
+               └─ Consistent casing
+
+            2. Comment Structure
+               └─ Block comments
+               └─ Inline explanations
+               └─ TODO markers
+
+            3. Code Examples
+               └─ Runnable snippets
+               └─ Clear outputs
+               └─ Error scenarios
+
+            4. Special Notations
+               └─ Deprecation notices
+               └─ Version compatibility
+               └─ Breaking changes
+
+            5. make sure to structure well and return a full article well designed to
+            present to my client.
+
+
+
+            ### Always include the Output in Format in xml tags :
+
+      <krodolez>
+      [dzevgrzb,;:]
+      </krodolez>
+  - name: 'Project analysis '
+    description: some desc
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/36274a11-9acf-4952-a26a-ae7352b682dd/9e8a7beb-0f0f-4d51-9b57-5741a5eb7665/project-analysis-.yaml
+    provider: aws-anthropic
+    input:
+      context: $krodolez
+    input_description: {}
+    output:
+      analysis: analysis
+    output_description: {}
+    promptContent: >-
+      as an expert in context analysis, 
+
+
+      Given the following document context:
+
+      {{context}}
+
+
+      Please analyze and extract the following key elements:
+
+
+      1. Document Identification
+
+      - Document title and reference number
+
+      - Service/Department responsible
+
+      - Document purpose/scope
+
+
+      2. Project Structure
+
+      - Main lots/sections and their purposes
+
+      - Key deliverables for each section
+
+      - Duration and timing constraints
+
+
+      3. Technical Requirements
+
+      - Development environment specifications
+
+      - Tools and technologies required
+
+      - Security requirements and compliance standards
+
+
+      4. Project Methodology
+
+      - Development approach
+
+      - Quality assurance processes
+
+      - Testing requirements
+
+
+      5. Team Roles & Responsibilities
+
+      - Key stakeholders
+
+      - Team structure
+
+      - Specific role requirements
+
+
+      6. Specific Technical Details
+
+      - Programming languages and frameworks
+
+      - Infrastructure components
+
+      - Architecture specifications
+
+
+      7. Delivery Requirements
+
+      - Expected deliverables
+
+      - Documentation requirements
+
+      - Quality criteria
+
+
+      Please format the response as follows:
+
+      - Use headers (##) for main sections
+
+      - Use bullet points for listing items
+
+      - Bold (**) key terms and concepts
+
+      - Include relevant citations [X] for extracted information
+
+      - Present technical specifications in code blocks
+
+      - Use tables for comparing elements
+
+
+      improve your answers to have a fully article at least 6 pages, each
+      section is detailled and well presented,
+
+
+
+      ### Always include the Output in Format in xml tags :
+
+
+      <analysis>
+
+      [the full analyse of my project]
+
+      </analysis>
