@@ -1,0 +1,204 @@
+name: omgv
+description: def
+defaultProvider: openai
+organization_name: youcefvvv's orga
+author_name: youcefvvv
+visibility: Personal
+steps:
+  - name: rrrrrxxx
+    description: xxx
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/36274a11-9acf-4952-a26a-ae7352b682dd/9e8a7beb-0f0f-4d51-9b57-5741a5eb7665/rrrrrxxx.yaml
+    provider: openai
+    input:
+      title: '{{title}}'
+    input_description: {}
+    output:
+      story generated: story generated
+      cinematics: cinematics
+      rfktg: rfktg
+    output_description: {}
+    promptContent: >-
+      You are an elite prompt engineer tasked with crafting a cinematic and
+      discursive story about the following title:
+
+
+      {{title}}
+
+
+      To help guide your storytelling, consider these examples of captivating
+      cinematic and discursive narratives:
+
+
+      Example 1:
+
+      The rain poured down in sheets, casting a somber mood over the city
+      streets. Against this backdrop, a lone figure emerged from the shadows,
+      her eyes narrowed with determination. This was the moment she had been
+      waiting for, the chance to uncover the truth that had eluded her for
+      years. With each step, the weight of her mission pressed upon her, fueling
+      her resolve to see this through to the end, no matter the cost.
+
+
+      Example 2:
+
+      The ancient castle loomed before him, its turrets and ramparts a testament
+      to a bygone era. As he approached the towering gates, a sense of unease
+      crept up his spine. What secrets did these walls hold? What truths had
+      been buried within, waiting to be unearthed? He knew the answers lay
+      beyond those formidable barriers, and he was prepared to delve into the
+      heart of the mystery, even if it meant confronting his own darkest fears.
+
+
+      Now, as an elite prompt engineer, craft a cinematic and discursive story
+      about the given title, drawing inspiration from the examples provided.
+      Ensure your story is engaging, detailed, and evocative, captivating the
+      attention of expert readers.
+
+
+      ### Always include the Output in Format in xml tags :
+
+
+      <story generated>
+
+      [gtyhu]
+
+      </story generated>
+
+
+      <cinematics>
+
+      [tvrf]
+
+      </cinematics>
+
+
+      <rfktg>
+
+      [grnj,kl]
+
+      </rfktg>
+  - name: cdscdsff
+    description: vfd
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/36274a11-9acf-4952-a26a-ae7352b682dd/9e8a7beb-0f0f-4d51-9b57-5741a5eb7665/cdscdsff.yaml
+    provider: openai
+    input:
+      content: $story generated
+    input_description: {}
+    output:
+      role_played: role_played
+    output_description: {}
+    promptContent: >-
+      As an expert role-playing storyteller, please craft a detailed,
+      multi-paragraph story scenario that explores the following topic:
+
+
+      {{content}}
+
+
+      Your story should:
+
+      - Provide a rich, immersive setting and character development
+
+      - Explore the topic from multiple perspectives and angles
+
+      - Demonstrate a clear narrative structure with a beginning, middle, and
+      end
+
+      - Incorporate advanced storytelling techniques, such as:
+        - Chain of Thought: Break down the reasoning and decision-making processes of the characters
+        - Tree of Thought: Explore alternative paths or outcomes based on the characters' choices
+        - Metacognitive Prompting: Encourage the characters to reflect on their actions and motivations
+      - Engage the reader with vivid descriptions, compelling dialogue, and a
+      strong emotional core
+
+
+      Please respond with your story scenario in detailed, well-structured
+      paragraphs. I look forward to your expert-level narrative.
+
+
+      ### Always include the Output in Format in xml tags :
+
+
+      <role_played>
+
+      [fre]
+
+      </role_played>
+  - name: xxx
+    description: xxx
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/36274a11-9acf-4952-a26a-ae7352b682dd/9e8a7beb-0f0f-4d51-9b57-5741a5eb7665/xxx.yaml
+    provider: aws-anthropic
+    input:
+      title: $role_played
+    input_description: {}
+    output:
+      story generated: story generated
+      cinematics: cinematics
+      rfktg: rfktg
+    output_description: {}
+    promptContent: >-
+      You are an elite prompt engineer tasked with crafting a cinematic and
+      discursive story about the following title:
+
+
+      {{title}}
+
+
+      To help guide your storytelling, consider these examples of captivating
+      cinematic and discursive narratives:
+
+
+      Example 1:
+
+      The rain poured down in sheets, casting a somber mood over the city
+      streets. Against this backdrop, a lone figure emerged from the shadows,
+      her eyes narrowed with determination. This was the moment she had been
+      waiting for, the chance to uncover the truth that had eluded her for
+      years. With each step, the weight of her mission pressed upon her, fueling
+      her resolve to see this through to the end, no matter the cost.
+
+
+      Example 2:
+
+      The ancient castle loomed before him, its turrets and ramparts a testament
+      to a bygone era. As he approached the towering gates, a sense of unease
+      crept up his spine. What secrets did these walls hold? What truths had
+      been buried within, waiting to be unearthed? He knew the answers lay
+      beyond those formidable barriers, and he was prepared to delve into the
+      heart of the mystery, even if it meant confronting his own darkest fears.
+
+
+      Now, as an elite prompt engineer, craft a cinematic and discursive story
+      about the given title, drawing inspiration from the examples provided.
+      Ensure your story is engaging, detailed, and evocative, captivating the
+      attention of expert readers.
+
+
+      ### Always include the Output in Format in xml tags :
+
+
+      <story generated>
+
+      [gtyhu]
+
+      </story generated>
+
+
+      <cinematics>
+
+      [tvrf]
+
+      </cinematics>
+
+
+      <rfktg>
+
+      [grnj,kl]
+
+      </rfktg>
