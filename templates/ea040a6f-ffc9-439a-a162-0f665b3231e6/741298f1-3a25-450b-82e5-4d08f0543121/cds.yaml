@@ -1,0 +1,219 @@
+name: cds
+version: 1.0.0
+description: cds
+author: youcef
+content: >-
+
+  /************************************************
+   * 🚀 Modern Single-Page Website Generator 3.0
+   * 📱 All-in-One File Generation
+   ************************************************/
+
+  As a 𝗦𝗲𝗻𝗶𝗼𝗿 𝗙𝗿𝗼𝗻𝘁𝗲𝗻𝗱 𝗘𝗻𝗴𝗶𝗻𝗲𝗲𝗿, create a modern,
+  responsive single-page website. Generate a complete, production-ready HTML
+  file that includes embedded Tailwind CSS and JavaScript.
+
+
+  📋 PROJECT DETAILS
+
+  -----------------
+
+  {{project_name}}
+
+  {{primary_purpose}}
+
+  {{main_features}}
+
+  {{color_scheme}}
+
+
+  🎯 REQUIRED SECTIONS
+
+  -------------------
+
+  1. Hero Section
+
+  2. Features/Services
+
+  3. About/Story
+
+  4. Portfolio/Showcase
+
+  5. Testimonials
+
+  6. Contact Form
+
+  7. Footer
+
+
+  ⚡ TECHNICAL SPECIFICATIONS
+
+  -------------------------
+
+  Generate a single HTML file including:
+
+  - HTML5 semantic structure
+
+  - Embedded Tailwind CSS (via CDN)
+
+  - Custom CSS (in <style> tag)
+
+  - Vanilla JavaScript (in <script> tag)
+
+  - Modern animations and transitions
+
+  - Interactive components
+
+  - Responsive design
+
+  - Dark/Light mode toggle
+
+  - Loading states
+
+  - Scroll effects
+
+  - Form validation
+
+  - Mobile menu
+
+  - Performance optimizations
+
+
+  🎨 STYLING REQUIREMENTS
+
+  ----------------------
+
+  - Modern UI/UX practices
+
+  - Smooth animations
+
+  - Glassmorphism effects
+
+  - Micro-interactions
+
+  - Custom color scheme
+
+  - Responsive typography
+
+  - Modern card designs
+
+  - Creative hover effects
+
+  - Custom scrollbar
+
+  - Loading skeletons
+
+
+  🔧 FEATURES TO INCLUDE
+
+  ---------------------
+
+  - Lazy loading images
+
+  - Smooth scroll behavior
+
+  - Intersection Observer animations
+
+  - Form validation
+
+  - Mobile-first approach
+
+  - SEO meta tags
+
+  - Social media integration
+
+  - Performance optimization
+
+  - Accessibility features
+
+  - Browser compatibility
+
+
+  Please output the complete code within:
+
+
+  <!DOCTYPE html>
+
+  <html lang="en">
+
+  [Complete production-ready code with embedded CSS and JavaScript]
+
+  </html>
+
+
+  i need a full html code file.
+
+
+  Expected code structure:
+
+  ```html
+
+  <!DOCTYPE html>
+
+  <html lang="en">
+
+  <head>
+      <!-- Meta tags, title, Tailwind CDN -->
+      <style>
+          /* Custom CSS */
+      </style>
+  </head>
+
+  <body>
+      <!-- HTML Structure -->
+      
+      <script>
+          // JavaScript functionality
+      </script>
+  </body>
+
+  </html>
+
+  ```
+
+
+  The generated code should:
+
+  ✓ Be production-ready
+
+  ✓ Include comments
+
+  ✓ Follow best practices
+
+  ✓ Be properly formatted
+
+  ✓ Include error handling
+
+  ✓ Be cross-browser compatible
+
+  ✓ modern design and rich features
+
+
+
+  ### Always include the Output in Format in xml tags :
+
+
+  <website_generated>
+
+  [the website generated]
+
+  </website_generated>
+input_variables:
+  project_name:
+    type: string
+    description: ''
+  primary_purpose:
+    type: string
+    description: ''
+  main_features:
+    type: string
+    description: ''
+  color_scheme:
+    type: string
+    description: ''
+model: anthropic.claude-3-5-sonnet-20241022-v2:0
+provider: aws-anthropic
+parameters:
+  max_tokens: 100000
+  temperature: 0.5
+  top_p: 0.5
