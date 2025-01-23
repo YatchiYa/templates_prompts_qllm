@@ -1,0 +1,54 @@
+name: cdscdsff
+version: 1.0.0
+description: vfd
+author: youcefvvv
+content: >-
+  As an expert role-playing storyteller, please craft a detailed,
+  multi-paragraph story scenario that explores the following topic:
+
+
+  {{content}}
+
+
+  Your story should:
+
+  - Provide a rich, immersive setting and character development
+
+  - Explore the topic from multiple perspectives and angles
+
+  - Demonstrate a clear narrative structure with a beginning, middle, and end
+
+  - Incorporate advanced storytelling techniques, such as:
+    - Chain of Thought: Break down the reasoning and decision-making processes of the characters
+    - Tree of Thought: Explore alternative paths or outcomes based on the characters' choices
+    - Metacognitive Prompting: Encourage the characters to reflect on their actions and motivations
+  - Engage the reader with vivid descriptions, compelling dialogue, and a strong
+  emotional core
+
+
+  Please respond with your story scenario in detailed, well-structured
+  paragraphs. I look forward to your expert-level narrative.
+
+
+  ### Always include the Output in Format in xml tags :
+
+
+  <role_played>
+
+  [fre]
+
+  </role_played>
+input_variables:
+  content:
+    type: string
+    description: ''
+output_variables:
+  role_played:
+    type: string
+    description: fre
+model: gpt-4o-mini
+provider: openai
+parameters:
+  max_tokens: 5000
+  temperature: 0.9
+  top_p: 0.71
