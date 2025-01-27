@@ -1,0 +1,81 @@
+name: dez
+description: dezdez
+defaultProvider: openai
+organization_name: ferferdezdz
+author_name: test
+visibility: Personal
+steps:
+  - name: Documents Bulk Load / Retrieve [PATH]
+    description: >-
+      Télécharge plusieurs fichiers depuis l'espace documentaire personnel ou de
+      l'organisation
+    type: tool
+    tool: s3ToLocal
+    input:
+      bucket_name: quantalogic-bucket
+      keys: '{{load_files}}'
+      separator: ','
+      encKey: ''
+    input_description:
+      bucket_name: Source de données à charger
+      keys: Liste des clés/chemins des fichiers à télécharger / utiliser.
+      separator: Délimiteur utilisé pour séparer plusieurs clés de fichiers
+    output: path_download
+    output_description:
+      path_download: >-
+        Collection de fichiers téléchargés depuis votre workspace, sauvegardés
+        localement Puis supprimés à la fin de l'execution du workflow
+  - name: dezdez
+    description: dezdezdez
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/48acd190-05b6-466c-baa1-aa68998fdcb7/b9be57e4-98d1-4db1-8442-2cd3a24c8826/dezdez.yaml
+    provider: openai
+    input:
+      context: $path_download
+    input_description: {}
+    output:
+      reesss: reesss
+    output_description: {}
+    promptContent: >-
+      Analyze the provided context {{context}} and craft a detailed,
+      well-structured response that addresses the following for the target
+      audience of Experts:
+
+
+      1. Summarize the key points and insights from the given context.
+
+      2. Identify the main question or problem that needs to be addressed.
+
+      3. Provide a step-by-step, logical chain of thought to arrive at a
+      comprehensive and robust solution.
+
+      4. Anticipate potential counterarguments or alternative perspectives, and
+      address them thoughtfully.
+
+      5. Draw clear conclusions and recommendations that are strongly supported
+      by the evidence and reasoning presented.
+
+
+      Ensure your response is:
+
+      - Clear and unambiguous
+
+      - Specific and detailed
+
+      - Designed to elicit high-quality, relevant responses from Experts
+
+      - Flexible enough to accommodate various scenarios within the context
+
+      - Structured to maximize the AI's capabilities in providing a
+      well-reasoned and actionable solution
+
+
+      ### Always include the Output in Format in xml tags :
+
+
+      <reesss>
+
+      [dezdez]
+
+      </reesss>
