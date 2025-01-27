@@ -1,0 +1,59 @@
+name: dezdez
+version: 1.0.0
+description: dezdezdez
+author: test
+content: >-
+  Analyze the provided context {{context}} and craft a detailed, well-structured
+  response that addresses the following for the target audience of Experts:
+
+
+  1. Summarize the key points and insights from the given context.
+
+  2. Identify the main question or problem that needs to be addressed.
+
+  3. Provide a step-by-step, logical chain of thought to arrive at a
+  comprehensive and robust solution.
+
+  4. Anticipate potential counterarguments or alternative perspectives, and
+  address them thoughtfully.
+
+  5. Draw clear conclusions and recommendations that are strongly supported by
+  the evidence and reasoning presented.
+
+
+  Ensure your response is:
+
+  - Clear and unambiguous
+
+  - Specific and detailed
+
+  - Designed to elicit high-quality, relevant responses from Experts
+
+  - Flexible enough to accommodate various scenarios within the context
+
+  - Structured to maximize the AI's capabilities in providing a well-reasoned
+  and actionable solution
+
+
+  ### Always include the Output in Format in xml tags :
+
+
+  <reesss>
+
+  [dezdez]
+
+  </reesss>
+input_variables:
+  context:
+    type: string
+    description: ''
+output_variables:
+  reesss:
+    type: string
+    description: dezdez
+model: gpt-4o-mini
+provider: openai
+parameters:
+  temperature: 0.8
+  max_tokens: 444
+  top_p: 0.73
