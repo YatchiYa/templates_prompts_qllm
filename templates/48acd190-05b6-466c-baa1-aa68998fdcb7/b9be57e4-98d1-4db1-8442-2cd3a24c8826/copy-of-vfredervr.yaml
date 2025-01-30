@@ -1,0 +1,13 @@
+name: Copy of vfredervr
+version: '1'
+description: bfvgbvd
+author: test
+content: |-
+  summerize this content : 
+  {{content}}
+input_variables:
+  content:
+    type: string
+    description: greds
+model: gpt-4o-mini
+provider: openai
