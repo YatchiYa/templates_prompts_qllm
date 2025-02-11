@@ -1,0 +1,29 @@
+name: er
+description: |
+  de
+defaultProvider: openai
+organization_name: youcef's orga
+author_name: youcef
+visibility: Personal
+steps:
+  - name: GitHub Repository Fetcher [REPO TO CONTEXT UniversalRepoLoader]
+    description: >-
+      Télécharge et traite le contenu d'un référentiel GitHub
+      UniversalRepoLoader
+    type: tool
+    tool: UniversalRepoLoader
+    input:
+      repositoryUrl: '{{input}}'
+      authToken: '{{token}}'
+      excludePatterns: '{{excludePatterns}}'
+      includePatterns: '{{includePatterns}}'
+    input_description:
+      repositoryUrl: L'URL complète du référentiel GitHub à télécharger
+      authToken: Jeton d'accès personnel GitHub pour l'authentification
+      exclude: Modèle de fichiers à exclure du téléchargement
+      include: Modèle de fichiers à inclure spécifiquement dans le téléchargement
+    output: repo_content
+    output_description:
+      repo_content: >-
+        Collection du contenu téléchargé du référentiel, filtrée selon les
+        modèles d'inclusion/exclusion
