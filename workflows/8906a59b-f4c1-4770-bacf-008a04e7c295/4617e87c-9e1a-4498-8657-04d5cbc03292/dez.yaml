@@ -1,5 +1,5 @@
-name: dez
-description: dez
+name: github-tool
+description: github-tool
 defaultProvider: openai
 organization_name: youcef's orga
 author_name: youcef
@@ -12,7 +12,6 @@ steps:
     input:
       repositoryUrl: '{{input}}'
       authToken: '{{token}}'
-      branch: '{{branch}}'
       excludePatterns: '{{exclude}}'
       includePatterns: '{{files_to_include}}'
     input_description:
