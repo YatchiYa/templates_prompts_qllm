@@ -22,27 +22,3 @@ steps:
         modèles d'inclusion/exclusion
     tool: githubLoader
     type: tool
-  - description: ccc
-    input:
-      context: $repo_content
-    input_description:
-      context: dzedz
-    name: cccc
-    output:
-      full_overview: full_overview
-    output_description:
-      full_overview: the full overview generated
-    promptContent: |-
-      give me a full overview about my context
-
-      {{context}}
-
-      ### Always include the Output in Format in xml tags :
-
-      <full_overview>
-      [the full overview generated]
-      </full_overview>
-    provider: openai
-    templateUrl: >-
-      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/8906a59b-f4c1-4770-bacf-008a04e7c295/4617e87c-9e1a-4498-8657-04d5cbc03292/cccc.yaml
-    type: template
