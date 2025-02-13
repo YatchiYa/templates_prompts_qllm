@@ -1,0 +1,27 @@
+name: efef
+description: ferfre
+defaultProvider: openai
+organization_name: youcef's orga
+author_name: youcef
+visibility: Personal
+steps:
+  - name: Bitbucket Repository Fetcher [REPO TO CONTEXT]
+    description: Télécharge et traite le contenu d'un référentiel Bitbucket
+    type: tool
+    tool: BitbucketLoader
+    input:
+      repositoryUrl: '{{input}}'
+      authToken: '{{token}}'
+      branch: '{{branch}}'
+      excludePatterns: '{{exclude}}'
+      includePatterns: '{{files_to_include}}'
+    input_description:
+      repositoryUrl: L'URL complète du référentiel GitHub à télécharger
+      authToken: Jeton d'accès personnel GitHub pour l'authentification
+      excludePatterns: Modèle de fichiers à exclure du téléchargement
+      includePatterns: Modèle de fichiers à inclure spécifiquement dans le téléchargement
+    output: repo_content
+    output_description:
+      repo_content: >-
+        Collection du contenu téléchargé du référentiel, filtrée selon les
+        modèles d'inclusion/exclusion
