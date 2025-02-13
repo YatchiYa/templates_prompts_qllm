@@ -1,0 +1,24 @@
+name: cccc
+version: 1.0.0
+description: ccc
+author: youcef
+content: |-
+  give me a full overview about my context
+
+  {{context}}
+
+  ### Always include the Output in Format in xml tags :
+
+  <full_overview>
+  [the full overview generated]
+  </full_overview>
+input_variables:
+  context:
+    type: string
+    description: dzedz
+output_variables:
+  full_overview:
+    type: string
+    description: the full overview generated
+model: gpt-4o-mini
+provider: openai
