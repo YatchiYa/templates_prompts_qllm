@@ -1,0 +1,48 @@
+name: github
+description: dezferfe
+visibility: Personal
+steps:
+  - description: Télécharge et traite le contenu d'un référentiel GitHub
+    input:
+      authToken: '{{token}}'
+      branch: '{{branch}}'
+      excludePatterns: '{{exclude}}'
+      includePatterns: '{{files_to_include}}'
+      repositoryUrl: '{{input}}'
+    input_description:
+      authToken: Jeton d'accès personnel GitHub pour l'authentification
+      excludePatterns: Modèle de fichiers à exclure du téléchargement
+      includePatterns: Modèle de fichiers à inclure spécifiquement dans le téléchargement
+      repositoryUrl: L'URL complète du référentiel GitHub à télécharger
+    name: GitHub Repository Fetcher [REPO TO CONTEXT]
+    output: repo_content
+    output_description:
+      repo_content: >-
+        Collection du contenu téléchargé du référentiel, filtrée selon les
+        modèles d'inclusion/exclusion
+    tool: githubLoader
+    type: tool
+  - description: ccc
+    input:
+      context: $repo_content
+    input_description:
+      context: dzedz
+    name: cccc
+    output:
+      full_overview: full_overview
+    output_description:
+      full_overview: the full overview generated
+    promptContent: |-
+      give me a full overview about my context
+
+      {{context}}
+
+      ### Always include the Output in Format in xml tags :
+
+      <full_overview>
+      [the full overview generated]
+      </full_overview>
+    provider: openai
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/8906a59b-f4c1-4770-bacf-008a04e7c295/4617e87c-9e1a-4498-8657-04d5cbc03292/cccc.yaml
+    type: template
