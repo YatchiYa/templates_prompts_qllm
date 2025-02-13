@@ -1,0 +1,32 @@
+name: rafy
+description: ''
+defaultProvider: openai
+organization_name: hsdhfvgh's orga
+author_name: hsdhfvgh
+visibility: Personal
+steps:
+  - name: Document Space Query [RAG]
+    description: >-
+      Outil avancé pour interroger et analyser des documents dans l'espace de
+      travail
+    type: tool
+    tool: ApiServerCall
+    input:
+      method: POST
+      headers: '{"accept":"application/json", "Content-Type":"application/json"}'
+      url: http://localhost/api/rag/query
+      token: '-'
+      keys: '{{load_files}}'
+      data: '{{data}}'
+    input_description:
+      url: URL complète pour l'interrogation des documents
+      method: Méthode d'envoi de la requête (POST, GET, etc.)
+      data: Contenu ou question à envoyer pour l'analyse des documents
+      headers: En-têtes personnalisés pour la requête
+      token: Jeton d'authentification si requis
+      files: Fichiers à charger pour l'analyse des documents
+    output: upload_response
+    output_description:
+      upload_response: >-
+        Résultat de l'interrogation incluant les réponses et les documents de
+        référence utilisés
