@@ -1,0 +1,11 @@
+name: dezdez
+version: 1.0.0
+description: dezdez
+author: youcef
+content: tell me a lovely story about {{love}}
+input_variables:
+  love:
+    type: string
+    description: dez
+model: gpt-4o-mini
+provider: openai
