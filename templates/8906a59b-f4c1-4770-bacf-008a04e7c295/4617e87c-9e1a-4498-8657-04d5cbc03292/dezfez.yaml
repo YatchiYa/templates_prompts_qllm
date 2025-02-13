@@ -1,0 +1,14 @@
+name: dezfez
+version: 1.0.0
+description: fzfzfzfre
+author: youcef
+content: |-
+  give a brief summerize about my context {{context}}
+
+  max 500 words
+input_variables:
+  context:
+    type: string
+    description: dazdza
+model: gpt-4o-mini
+provider: openai
