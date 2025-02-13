@@ -1,0 +1,43 @@
+name: bitbczc
+description: cdv
+defaultProvider: openai
+organization_name: youcef's orga
+author_name: youcef
+visibility: Personal
+steps:
+  - name: Bitbucket Repository Fetcher [REPO TO CONTEXT]
+    description: Télécharge et traite le contenu d'un référentiel Bitbucket
+    type: tool
+    tool: BitbucketLoader
+    input:
+      repositoryUrl: '{{input}}'
+      authToken: '{{token}}'
+      branch: '{{branch}}'
+      excludePatterns: '{{exclude}}'
+      includePatterns: '{{files_to_include}}'
+    input_description:
+      repositoryUrl: L'URL complète du référentiel GitHub à télécharger
+      authToken: Jeton d'accès personnel GitHub pour l'authentification
+      excludePatterns: Modèle de fichiers à exclure du téléchargement
+      includePatterns: Modèle de fichiers à inclure spécifiquement dans le téléchargement
+    output: repo_content
+    output_description:
+      repo_content: >-
+        Collection du contenu téléchargé du référentiel, filtrée selon les
+        modèles d'inclusion/exclusion
+  - name: dezfez
+    description: fzfzfzfre
+    type: template
+    templateUrl: >-
+      https://github.com/YatchiYa/templates_prompts_qllm/blob/main/templates/8906a59b-f4c1-4770-bacf-008a04e7c295/4617e87c-9e1a-4498-8657-04d5cbc03292/dezfez.yaml
+    provider: openai
+    promptContent: |-
+      give a brief summerize about my context {{context}}
+
+      max 500 words
+    input:
+      context: $repo_content
+    input_description:
+      context: dazdza
+    output: {}
+    output_description: {}
