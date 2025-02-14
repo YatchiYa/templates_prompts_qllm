@@ -1,0 +1,28 @@
+name: cdgtd
+description: ''
+defaultProvider: openai
+organization_name: hsdhfvgh's orga
+author_name: hsdhfvgh
+visibility: Personal
+steps:
+  - name: Code2Prompt, Document Space parser [CONTEXT]
+    description: >-
+      Outil Code2Prompt pour transformer le contenu d'un dossier en fichier
+      Markdown unique
+    type: tool
+    tool: ApiServiceCallC1
+    input:
+      method: POST
+      headers: '{"accept":"application/json", "Content-Type":"application/json"}'
+      url: http://nginx/api/raglite/parse_folder
+      token: '-'
+      data: '{{data}}'
+    input_description:
+      url: URL complète pour analyser le dossier
+      method: Méthode HTTP pour exécuter la requête (par exemple, POST)
+      data: Chemin vers le dossier à analyser
+      headers: En-têtes personnalisés pour la requête
+      token: Jeton d'authentification si requis
+    output: upload_response
+    output_description:
+      upload_response: Fichier Markdown généré contenant tout le contenu du dossier analysé
