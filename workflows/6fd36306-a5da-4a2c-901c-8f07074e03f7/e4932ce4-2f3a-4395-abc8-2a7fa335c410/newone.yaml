@@ -1,0 +1,47 @@
+name: newone
+description: ''
+defaultProvider: openai
+organization_name: hsdhfvgh's orga
+author_name: hsdhfvgh
+visibility: Personal
+steps:
+  - name: Document Load  / Retrieve [CONTEXT]
+    description: >-
+      Charger ou Récupère Un fichier spécifique depuis le stockage de votre
+      workspace
+    type: tool
+    tool: s3
+    input:
+      operation: load
+      key: '{{load_key}}'
+      bucket_name: quantalogic-bucket
+      encKey: '{{encKey}}'
+    input_description:
+      operation: Type d'opération à effectuer (load)
+      bucket_name: Nom du bucket à accéder
+      key: Clé/chemin spécifique du fichier à charger
+      encKey: Clé d'encodage pour le bucket
+    output: template_content
+    output_description:
+      template_content: Contenu du fichier récupéré depuis le workspace
+  - name: Code2Prompt, Document Space parser [CONTEXT]
+    description: >-
+      Outil Code2Prompt pour transformer le contenu d'un dossier en fichier
+      Markdown unique
+    type: tool
+    tool: ApiServiceCallC1
+    input:
+      method: POST
+      headers: '{"accept":"application/json", "Content-Type":"application/json"}'
+      url: http://nginx/api/raglite/parse_folder
+      token: '-'
+      data: $template_content
+    input_description:
+      url: URL complète pour analyser le dossier
+      method: Méthode HTTP pour exécuter la requête (par exemple, POST)
+      data: Chemin vers le dossier à analyser
+      headers: En-têtes personnalisés pour la requête
+      token: Jeton d'authentification si requis
+    output: upload_response
+    output_description:
+      upload_response: Fichier Markdown généré contenant tout le contenu du dossier analysé
