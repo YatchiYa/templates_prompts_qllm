@@ -1,0 +1,11 @@
+name: ' Case Study/Success Story'
+version: 1.0.0
+description: '"How [Person/Company] Achieved [Impressive Result] Using [Method/Strategy]"'
+author: youcefs
+content: Tell me a story about {{title}}
+input_variables:
+  title:
+    type: string
+    description: dezdez
+model: gpt-4o-mini
+provider: openai
