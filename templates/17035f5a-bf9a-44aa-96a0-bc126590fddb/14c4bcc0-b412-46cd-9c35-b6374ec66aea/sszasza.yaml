@@ -1,0 +1,12 @@
+name: SSZASZA
+version: 1.0.0
+description: SZASZA
+author: youcefs
+content: tell me astory about {{title}}
+input_variables:
+  title:
+    type: string
+    description: ''
+    place_holder: ''
+model: gpt-4o-mini
+provider: openai
