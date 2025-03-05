@@ -1,0 +1,11 @@
+name: Trend Analysis/Forecast
+version: 1.0.0
+description: '"[Number] [Industry] Trends That Will Shape [Year/Time Period]"'
+author: youcefs
+content: Tell me a story about {{title}}
+input_variables:
+  title:
+    type: string
+    description: dezdez
+model: gpt-4o-mini
+provider: openai
