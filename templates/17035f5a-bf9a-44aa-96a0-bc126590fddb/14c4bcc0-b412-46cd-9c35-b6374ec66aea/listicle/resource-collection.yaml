@@ -1,0 +1,11 @@
+name: Listicle/Resource Collection
+version: 1.0.0
+description: '"[Number] Essential [Resources/Tools/Tips] for [Target Audience] in [Year]"'
+author: youcefs
+content: Tell me a story about {{title}}
+input_variables:
+  title:
+    type: string
+    description: dezdez
+model: gpt-4o-mini
+provider: openai
