@@ -1,0 +1,11 @@
+name: Problem-Solution Article
+version: 1.0.0
+description: '[X] Ways to Solve [Common Problem] That Actually Work'
+author: youcefs
+content: Tell me a story about {{title}}
+input_variables:
+  title:
+    type: string
+    description: dezdez
+model: DeepSeek-R1-Distill-Llama-70B
+provider: ovh
