@@ -1,0 +1,8 @@
+name: CCC
+version: 1.0.0
+description: CCC
+author: XXx
+content: CCC
+input_variables: {}
+model: gpt-4o-mini
+provider: openai
