@@ -1,0 +1,22 @@
+name: cdcsd
+version: 1.0.0
+description: ccdscds
+author: ''
+content: |-
+  i want you to give a story about {{title}} in the style of {{style}} 
+  give me the cinematics {{cinematics}}
+input_variables:
+  title:
+    type: string
+    description: ''
+    place_holder: ''
+  style:
+    type: string
+    description: ''
+    place_holder: ''
+  cinematics:
+    type: string
+    description: ''
+    place_holder: ''
+model: gpt-4o-mini
+provider: openai
