@@ -1,0 +1,11 @@
+name: TYHG
+version: 1.0.0
+description: HGFDFGH
+author: ''
+content: tell me a story about {{title}}
+input_variables:
+  title:
+    type: string
+    description: tst
+model: gpt-4o-mini
+provider: openai
